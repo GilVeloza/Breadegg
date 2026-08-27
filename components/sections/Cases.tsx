@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -8,7 +9,7 @@ export default function Cases() {
   const locale = useLocale();
   const items = publishedCases();
 
-  // Nothing real to show yet — better an absent section than an empty one.
+  // Nothing real to show yet, better an absent section than an empty one.
   if (items.length === 0) return null;
 
   return (
@@ -20,36 +21,73 @@ export default function Cases() {
           note={t("note")}
         />
 
-        <ul className="mt-[clamp(3rem,7vh,5rem)] grid gap-px overflow-hidden rounded-2xl bg-crust-lift md:grid-cols-2">
+        {/* One project should not sit next to an empty half of the grid, so the
+            second column only exists once there is something to put in it. */}
+        <ul
+          className={`mt-[clamp(3rem,7vh,5rem)] grid gap-px overflow-hidden rounded-2xl bg-crust-lift ${
+            items.length > 1 ? "md:grid-cols-2" : ""
+          }`}
+        >
           {items.map((item, i) => (
             <Reveal
               as="li"
               key={item.id}
               delay={i * 0.08}
-              className="bg-crust p-8 md:p-10"
+              className="flex flex-col bg-crust p-8 md:p-10"
             >
               {item.draft ? (
-                <span className="t-eyebrow mb-5 inline-block rounded border border-yolk/40 px-2 py-1 text-yolk">
+                <span className="t-eyebrow mb-5 inline-block w-fit rounded border border-yolk/40 px-2 py-1 text-yolk">
                   draft · dev only
                 </span>
               ) : null}
 
-              <p className="t-num t-display text-yolk">{item.metric}</p>
-              <p className="t-lead mt-3 text-crumb">
-                {pick(item.metricLabel, locale)}
-              </p>
-
-              <dl className="mt-8 space-y-4 border-t border-crust-lift pt-6">
-                <div>
-                  <dt className="t-eyebrow text-ash-dim">
-                    {pick(item.client, locale)}
-                  </dt>
-                  <dd className="t-body mt-2 text-ash">
-                    {pick(item.problem, locale)}
-                  </dd>
+              {item.logo ? (
+                /* Each mark sits on the ground it was drawn for: navy on
+                   cream, cream on grey. One shared plate colour would leave
+                   half of them illegible. Fixed height, free width, so a row
+                   of logos lines up whatever their proportions. */
+                <div
+                  className="mb-8 inline-flex h-16 w-fit items-center rounded-xl px-6"
+                  style={{ backgroundColor: item.logo.plate }}
+                >
+                  <Image
+                    src={item.logo.src}
+                    alt={item.logo.alt}
+                    width={item.logo.width}
+                    height={item.logo.height}
+                    className="h-8 w-auto"
+                  />
                 </div>
-                <dd className="t-body text-crumb">{pick(item.built, locale)}</dd>
-              </dl>
+              ) : null}
+
+              <p className="t-h2 text-crumb">{item.name}</p>
+
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {item.what.map((what) => (
+                  <li
+                    key={what.en}
+                    className="t-eyebrow rounded-full border border-crust-lift px-3 py-1.5 text-ash"
+                  >
+                    {pick(what, locale)}
+                  </li>
+                ))}
+              </ul>
+
+              <p className="t-body mt-5 text-ash">{pick(item.body, locale)}</p>
+
+              {item.href ? (
+                /* mt-auto so the links line up along the bottom of a row of
+                   cards, however much text each one carries above them. */
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="t-eyebrow mt-auto inline-flex w-fit items-center gap-2 pt-8 text-ash transition-colors duration-200 hover:text-crumb"
+                >
+                  {item.href.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}
+                  <span aria-hidden="true">↗</span>
+                </a>
+              ) : null}
             </Reveal>
           ))}
         </ul>
