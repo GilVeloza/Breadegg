@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "title": "BreadEgg · Estúdio de Produto com IA",
+    "description": "Transformamos ideias em produtos inteligentes. IA, software e design, construídos como uma só coisa. Da Madeira, Portugal."
+  },
+  "nav": {
+    "contact": "Contacto",
+    "language": "Idioma",
+    "skip": "Saltar para o conteúdo"
+  },
+  "hero": {
+    "title": "Criamos coisas impossíveis de ignorar.",
+    "location": "Madeira, Portugal",
+    "scroll": "Descer"
+  },
+  "manifesto": {
+    "line1": "Não precisa de mais uma agência.",
+    "line2": "Precisa de nós.",
+    "body": "A maioria das empresas compra o seu futuro aos bocados. A marca num sítio. O website noutro. O software num terceiro. E uma ferramenta de IA que ninguém abre. Quatro faturas, quatro roadmaps, e nada que encaixe.",
+    "close": "Nós construímos a coisa inteira. Porque a coisa inteira é que é o ponto."
+  },
+  "capabilities": {
+    "eyebrow": "Por dentro",
+    "title": "Um estúdio, a stack toda.",
+    "items": [
+      "Machine learning",
+      "Previsão",
+      "Sistemas de recomendação",
+      "LLMs & RAG",
+      "Agentes de IA",
+      "Visão computacional",
+      "Automação de processos",
+      "Pipelines de dados",
+      "Dashboards",
+      "Aplicações web",
+      "SaaS",
+      "Apps móveis",
+      "APIs & integrações",
+      "Naming",
+      "Identidade de marca",
+      "Design systems",
+      "UI/UX",
+      "Websites"
+    ]
+  },
+  "cases": {
+    "eyebrow": "Trabalhos selecionados",
+    "title": "Resultados, não entregáveis.",
+    "note": "Qualquer um mostra um screenshot. Estes são os números que mudaram."
+  },
+  "madeira": {
+    "eyebrow": "Onde estamos",
+    "title": "Construído numa ilha no Atlântico.",
+    "body": "A Madeira é um mercado pequeno que se comporta como um laboratório. Hotéis, alojamento local, restaurantes e agências, densos o suficiente para testar uma ideia em semanas em vez de trimestres. O que aguenta aqui, levamos para o continente.",
+    "chain": [
+      { "place": "Madeira", "role": "o laboratório" },
+      { "place": "Mundo", "role": "o mercado" }
+    ],
+    "close": "A distância deixou de importar há algum tempo. O trabalho acontece onde está o problema."
+  },
+  "contact": {
+    "eyebrow": "Comece aqui",
+    "title": "Traga-nos um problema.",
+    "body": "Não uma especificação, não uma lista de funcionalidades. A coisa que lhe está a custar tempo ou dinheiro. Se não formos as pessoas certas, dizemos e apontamos-lhe um sítio melhor.",
+    "form": {
+      "name": "Nome",
+      "email": "Email",
+      "company": "Empresa",
+      "optional": "opcional",
+      "message": "Qual é o problema?",
+      "submit": "Enviar",
+      "sending": "A enviar…",
+      "success": "Recebido. Damos notícias dentro de um dia.",
+      "error": "Não foi possível enviar. Escreva-nos diretamente que nós tratamos.",
+      "required": "Obrigatório"
+    },
+    "or": "ou",
+    "book": "Marcar uma chamada de 30 minutos"
+  },
+  "footer": {
+    "location": "Funchal, Madeira",
+    "copyright": "© {year} Breadegg®"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "title": "BreadEgg · AI Product Studio",
+    "description": "We turn ideas into intelligent products. AI, software and design, built as one thing. From Madeira, Portugal."
+  },
+  "nav": {
+    "contact": "Contact",
+    "language": "Language",
+    "skip": "Skip to content"
+  },
+  "hero": {
+    "title": "We build things impossible to ignore.",
+    "location": "Madeira, Portugal",
+    "scroll": "Scroll"
+  },
+  "manifesto": {
+    "line1": "You don't need another agency.",
+    "line2": "You need us.",
+    "body": "Most companies buy their future in pieces. A brand from one place. A website from another. Software from a third. And an AI tool nobody opens. Four invoices, four roadmaps, and nothing that fits together.",
+    "close": "We build the whole thing. Because the whole thing is the point."
+  },
+  "capabilities": {
+    "eyebrow": "Under the hood",
+    "title": "One studio, the whole stack.",
+    "items": [
+      "Machine learning",
+      "Forecasting",
+      "Recommendation systems",
+      "LLMs & RAG",
+      "AI agents",
+      "Computer vision",
+      "Process automation",
+      "Data pipelines",
+      "Dashboards",
+      "Web apps",
+      "SaaS",
+      "Mobile apps",
+      "APIs & integrations",
+      "Naming",
+      "Brand identity",
+      "Design systems",
+      "UI/UX",
+      "Websites"
+    ]
+  },
+  "cases": {
+    "eyebrow": "Selected work",
+    "title": "Results, not deliverables.",
+    "note": "Anyone can show a screenshot. These are the numbers that changed."
+  },
+  "madeira": {
+    "eyebrow": "Where we are",
+    "title": "Built on an island in the Atlantic.",
+    "body": "Madeira is a small market that behaves like a laboratory. Hotels, rentals, restaurants and agencies, dense enough that an idea can be tested in weeks instead of quarters. What holds up here, we take to the mainland.",
+    "chain": [
+      { "place": "Madeira", "role": "the laboratory" },
+      { "place": "World", "role": "the market" }
+    ],
+    "close": "Distance stopped mattering a while ago. The work happens where the problem is."
+  },
+  "contact": {
+    "eyebrow": "Start here",
+    "title": "Bring us a problem.",
+    "body": "Not a spec, not a feature list. The thing that is costing you time or money. If we're not the right people for it, we'll say so and point you somewhere better.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "company": "Company",
+      "optional": "optional",
+      "message": "What's the problem?",
+      "submit": "Send",
+      "sending": "Sending…",
+      "success": "Got it. You'll hear from us within a day.",
+      "error": "That didn't send. Email us directly and we'll pick it up.",
+      "required": "Required"
+    },
+    "or": "or",
+    "book": "Book a 30-minute call"
+  },
+  "footer": {
+    "location": "Funchal, Madeira",
+    "copyright": "© {year} Breadegg®"
+  }
+}

@@ -1,26 +1,310 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─────────────────────────────────────────────────────────────
+   BreadEgg — brand tokens
+   Sampled from the original mark: a glowing yolk on roasted crust.
+   Orange is light, never UI fill. It belongs to the egg.
+   ───────────────────────────────────────────────────────────── */
+
+@theme {
+  --color-crust: #2a1a0f;
+  --color-crust-lift: #34210f;
+  --color-crust-deep: #1c1109;
+  --color-crumb: #f7f1e8;
+  --color-ash: #a89685;
+  --color-ash-dim: #6f6154;
+
+  --color-yolk: #f4901c;
+  --color-yolk-hi: #ffedae;
+  --color-yolk-deep: #e0690a;
+
+  --font-sans: var(--font-inter), ui-sans-serif, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+
+  /* Motion — one shared easing so everything feels like one object */
+  --ease-egg: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ─────────────────────────────────────────────────────────────
+   Base
+   ───────────────────────────────────────────────────────────── */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background-color: var(--color-crust);
+  /* Lenis drives scrolling; never let the browser fight it. */
+  scroll-behavior: auto;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-crust);
+  color: var(--color-crumb);
+  font-family: var(--font-sans);
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* `clip`, not `hidden`: hidden turns body into a scroll container and
+     silently breaks every `position: sticky` inside it. */
+  overflow-x: clip;
+}
+
+::selection {
+  background-color: var(--color-yolk);
+  color: var(--color-crust);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-yolk);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Type scale — the iOS system
+   Semibold for display (never 700+), tight optical tracking,
+   hierarchy by size and weight alone. Fluid so German — which runs
+   ~30% longer than English — never breaks a headline.
+   ───────────────────────────────────────────────────────────── */
+
+.t-display {
+  font-size: clamp(2.75rem, 8.5vw, 8rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.96;
+  text-wrap: balance;
+}
+
+/* The hero is one screen, so its headline is capped by height as well as by
+   width. The 8.5vw term alone knows nothing about how much room is left under
+   the egg: on any short, wide window it ran four lines deep and pushed the
+   bottom of the hero out of sight. The floor keeps it honest on phones. */
+.t-display-hero {
+  font-size: max(2.75rem, min(8.5vw, 7rem, 9vh));
+}
+
+.t-h1 {
+  font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+  font-weight: 600;
+  letter-spacing: -0.038em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.t-h2 {
+  font-size: clamp(1.625rem, 3.2vw, 2.75rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.t-lead {
+  font-size: clamp(1.0625rem, 1.5vw, 1.375rem);
+  font-weight: 400;
+  letter-spacing: -0.012em;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.t-body {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.t-eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  /* Small text gets positive tracking — the other half of the SF rule. */
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+.t-num {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Grain — dithers the big gradients. Without this the yolk bands
+   visibly on 8-bit displays. Not decoration.
+   ───────────────────────────────────────────────────────────── */
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ─────────────────────────────────────────────────────────────
+   The egg, in CSS.
+   Colour stops sampled from the original mark. This paints on the
+   first frame, so it is the LCP element — the WebGL egg fades in
+   over the top of it later, and takes its place when it can't run.
+   ───────────────────────────────────────────────────────────── */
+
+.egg-yolk {
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 32%,
+    #fff7d4 0%,
+    #ffeaa4 10%,
+    #fcd063 26%,
+    #f8ab2a 48%,
+    #f4901c 66%,
+    #ea7a12 84%,
+    #dd660a 100%
+  );
+  box-shadow:
+    inset -16px -20px 56px rgba(120, 48, 0, 0.26),
+    0 0 100px 8px rgba(244, 144, 28, 0.16);
+}
+
+.egg-glow {
+  background: radial-gradient(
+    circle,
+    rgba(244, 144, 28, 0.34) 0%,
+    rgba(244, 144, 28, 0.11) 42%,
+    rgba(244, 144, 28, 0) 70%
+  );
+  filter: blur(36px);
+}
+
+/* Floating: mostly a slow rise and fall, with the faintest swell. Kept in
+   step with the WebGL egg so the cross-fade between them is invisible. */
+@keyframes egg-float {
+  0%,
+  100% {
+    transform: scale(1) translate3d(0, 3.6%, 0);
+  }
+  50% {
+    transform: scale(1.008) translate3d(0, -3.6%, 0);
+  }
+}
+
+.egg-breathe {
+  animation: egg-float 9s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  will-change: transform;
+}
+
+/* The halo that blooms around the egg on scroll. Warm at the core and gone
+   well before its edge, so it reads as light rather than as a disc. */
+.egg-halo {
+  background: radial-gradient(
+    circle,
+    rgba(255, 234, 164, 0.3) 0%,
+    rgba(244, 144, 28, 0.22) 30%,
+    rgba(244, 144, 28, 0.08) 52%,
+    rgba(244, 144, 28, 0) 72%
+  );
+  filter: blur(42px);
+}
+
+@keyframes scroll-cue {
+  0% {
+    transform: translateY(-45%);
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(45%);
+    opacity: 0;
+  }
+}
+
+.scroll-cue::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  margin-left: -0.5px;
+  background: var(--color-yolk);
+  animation: scroll-cue 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Capability marquee
+   ───────────────────────────────────────────────────────────── */
+
+@keyframes marquee-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.marquee-left {
+  animation: marquee-left 46s linear infinite;
+}
+
+.marquee-right {
+  animation: marquee-right 58s linear infinite;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+/* Without a running animation the doubled list is just dead weight. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .marquee-dupe {
+    display: none;
+  }
+  .marquee-mask {
+    mask-image: none;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Reduced motion — the page stays whole, it just stops moving.
+   ───────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

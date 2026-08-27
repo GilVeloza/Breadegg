@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "title": "BreadEgg · KI-Produktstudio",
+    "description": "Wir machen aus Ideen intelligente Produkte. KI, Software und Design, als eine Sache gebaut. Aus Madeira, Portugal."
+  },
+  "nav": {
+    "contact": "Kontakt",
+    "language": "Sprache",
+    "skip": "Zum Inhalt springen"
+  },
+  "hero": {
+    "title": "Wir bauen Dinge, die niemand ignorieren kann.",
+    "location": "Madeira, Portugal",
+    "scroll": "Scrollen"
+  },
+  "manifesto": {
+    "line1": "Sie brauchen keine weitere Agentur.",
+    "line2": "Sie brauchen uns.",
+    "body": "Die meisten Unternehmen kaufen ihre Zukunft in Einzelteilen. Die Marke hier. Die Website dort. Software vom Dritten. Und ein KI-Werkzeug, das niemand öffnet. Vier Rechnungen, vier Roadmaps, und nichts, was zusammenpasst.",
+    "close": "Wir bauen das Ganze. Weil das Ganze der Punkt ist."
+  },
+  "capabilities": {
+    "eyebrow": "Unter der Haube",
+    "title": "Ein Studio, der ganze Stack.",
+    "items": [
+      "Machine Learning",
+      "Prognosen",
+      "Empfehlungssysteme",
+      "LLMs & RAG",
+      "KI-Agenten",
+      "Computer Vision",
+      "Prozessautomatisierung",
+      "Daten-Pipelines",
+      "Dashboards",
+      "Web-Anwendungen",
+      "SaaS",
+      "Mobile Apps",
+      "APIs & Integrationen",
+      "Naming",
+      "Markenidentität",
+      "Design-Systeme",
+      "UI/UX",
+      "Websites"
+    ]
+  },
+  "cases": {
+    "eyebrow": "Ausgewählte Arbeiten",
+    "title": "Ergebnisse, keine Liefergegenstände.",
+    "note": "Einen Screenshot zeigt jeder. Das hier sind die Zahlen, die sich verändert haben."
+  },
+  "madeira": {
+    "eyebrow": "Wo wir sind",
+    "title": "Gebaut auf einer Insel im Atlantik.",
+    "body": "Madeira ist ein kleiner Markt, der sich wie ein Labor verhält. Hotels, Ferienvermietung, Restaurants und Agenturen, dicht genug, um eine Idee in Wochen statt in Quartalen zu testen. Was hier standhält, nehmen wir aufs Festland.",
+    "chain": [
+      { "place": "Madeira", "role": "das Labor" },
+      { "place": "Welt", "role": "der Markt" }
+    ],
+    "close": "Entfernung spielt schon länger keine Rolle mehr. Die Arbeit passiert dort, wo das Problem ist."
+  },
+  "contact": {
+    "eyebrow": "Hier anfangen",
+    "title": "Bringen Sie uns ein Problem.",
+    "body": "Keine Spezifikation, keine Funktionsliste. Die Sache, die Sie Zeit oder Geld kostet. Wenn wir die Falschen dafür sind, sagen wir es und verweisen Sie weiter.",
+    "form": {
+      "name": "Name",
+      "email": "E-Mail",
+      "company": "Unternehmen",
+      "optional": "optional",
+      "message": "Worin besteht das Problem?",
+      "submit": "Senden",
+      "sending": "Wird gesendet…",
+      "success": "Angekommen. Sie hören innerhalb eines Tages von uns.",
+      "error": "Das ging nicht raus. Schreiben Sie uns direkt, wir greifen es auf.",
+      "required": "Pflichtfeld"
+    },
+    "or": "oder",
+    "book": "30-Minuten-Gespräch buchen"
+  },
+  "footer": {
+    "location": "Funchal, Madeira",
+    "copyright": "© {year} Breadegg®"
+  }
+}
