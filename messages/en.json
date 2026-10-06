@@ -46,7 +46,11 @@
   "cases": {
     "eyebrow": "Selected work",
     "title": "Work we've put our name on.",
-    "note": "What we made, and who we made it for."
+    "note": "What we made, and who we made it for.",
+    "prev": "Previous project",
+    "next": "Next project",
+    "pause": "Pause",
+    "play": "Play"
   },
   "madeira": {
     "eyebrow": "Where we are",

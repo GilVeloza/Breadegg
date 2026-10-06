@@ -31,6 +31,11 @@ export type CaseStudy = {
     alt: string;
     /** The ground this particular mark was drawn for. */
     plate: string;
+    /**
+     * A squarish mark rather than a wordmark. At a wordmark's height it reads
+     * as a thumbnail, so the card sets it taller.
+     */
+    compact?: boolean;
   };
   /**
    * What we made, one short label per discipline. A list rather than a
@@ -49,6 +54,38 @@ export function pick(value: Localized, locale: string): string {
 }
 
 export const cases: CaseStudy[] = [
+  {
+    id: "rackers",
+    name: "Rackers",
+    logo: {
+      src: "/cases/rackers.png",
+      width: 520,
+      height: 88,
+      alt: "Rackers",
+      plate: "#0b1322",
+    },
+    what: [
+      {
+        en: "iOS and Apple Watch app",
+        pt: "App para iOS e Apple Watch",
+        es: "App para iOS y Apple Watch",
+        de: "App für iOS und Apple Watch",
+      },
+      {
+        en: "Website",
+        pt: "Website",
+        es: "Sitio web",
+        de: "Website",
+      },
+    ],
+    body: {
+      en: "One app, six sports. A scoreboard for padel, tennis, pickleball, squash, table tennis and badminton, on iPhone and Apple Watch.",
+      pt: "Uma app, seis desportos. Um marcador para padel, ténis, pickleball, squash, ténis de mesa e badminton, no iPhone e no Apple Watch.",
+      es: "Una app, seis deportes. Un marcador para pádel, tenis, pickleball, squash, tenis de mesa y bádminton, en iPhone y Apple Watch.",
+      de: "Eine App, sechs Sportarten. Eine Anzeigetafel für Padel, Tennis, Pickleball, Squash, Tischtennis und Badminton, auf iPhone und Apple Watch.",
+    },
+    href: "https://rackers.app",
+  },
   {
     id: "madeira-dream-stays",
     name: "Madeira Dream Stays",
@@ -106,6 +143,60 @@ export const cases: CaseStudy[] = [
       de: "Portugals Politik an einem Ort. Initiativen, Abstimmungen, Debatten und Wahlen, direkt aus den offiziellen Quellen, auf iOS und Android.",
     },
     href: "https://politicamais.pt",
+  },
+  {
+    id: "art-4-everyone",
+    name: "Art 4 Everyone",
+    logo: {
+      src: "/cases/art-4-everyone.png",
+      width: 600,
+      height: 352,
+      alt: "Art 4 Everyone",
+      plate: "#fbf0c9",
+      compact: true,
+    },
+    what: [
+      {
+        en: "Event website",
+        pt: "Website do evento",
+        es: "Web del evento",
+        de: "Event-Website",
+      },
+    ],
+    body: {
+      en: "A free, open-air art gathering in Funchal, where anyone can turn up and make something.",
+      pt: "Um encontro de arte gratuito e ao ar livre no Funchal, onde qualquer pessoa pode aparecer e criar.",
+      es: "Un encuentro de arte gratuito y al aire libre en Funchal, donde cualquiera puede presentarse y crear algo.",
+      de: "Ein kostenloses Kunsttreffen unter freiem Himmel in Funchal, zu dem jeder kommen und etwas gestalten kann.",
+    },
+    href: "https://www.art4everyone.world",
+  },
+  {
+    id: "eeyesee",
+    name: "EEYE.SEE",
+    logo: {
+      src: "/cases/eeyesee.png",
+      width: 600,
+      height: 323,
+      alt: "EEYE.SEE",
+      plate: "#bf99e6",
+      compact: true,
+    },
+    what: [
+      {
+        en: "Website and online shop",
+        pt: "Website e loja online",
+        es: "Web y tienda online",
+        de: "Website und Onlineshop",
+      },
+    ],
+    body: {
+      en: "The studio of surreal artist Laura Michelle Kort. Originals, prints and commissions, all circling the motif of the eye.",
+      pt: "O estúdio da artista surrealista Laura Michelle Kort. Originais, impressões e encomendas, sempre à volta do motivo do olho.",
+      es: "El estudio de la artista surrealista Laura Michelle Kort. Originales, láminas y encargos, siempre en torno al motivo del ojo.",
+      de: "Das Atelier der surrealistischen Künstlerin Laura Michelle Kort. Originale, Drucke und Auftragsarbeiten, alle rund um das Motiv des Auges.",
+    },
+    href: "https://eeyesee.com",
   },
 ];
 
