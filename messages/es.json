@@ -46,7 +46,11 @@
   "cases": {
     "eyebrow": "Trabajos seleccionados",
     "title": "Trabajo que firmamos.",
-    "note": "Lo que hicimos, y para quién."
+    "note": "Lo que hicimos, y para quién.",
+    "prev": "Proyecto anterior",
+    "next": "Siguiente proyecto",
+    "pause": "Pausar",
+    "play": "Reproducir"
   },
   "madeira": {
     "eyebrow": "Dónde estamos",

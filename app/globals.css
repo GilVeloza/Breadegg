@@ -295,6 +295,51 @@ body {
 }
 
 /* ─────────────────────────────────────────────────────────────
+   Work carousel
+   The track spans the full width of the page, but its first card
+   starts where the content column does: the padding is the gap
+   between the 72rem column and the window edge, never under the
+   1.5rem every section keeps.
+   Snapping uses the same inset so a card never parks half under it.
+   ───────────────────────────────────────────────────────────── */
+
+.carousel-track {
+  --edge: max(1.5rem, calc((100% - 72rem) / 2));
+  padding-inline: var(--edge);
+  scroll-padding-inline: var(--edge);
+  scrollbar-width: none;
+  /* The neighbours peeking in past the column fade out towards the window
+     edge, so a half card reads as a glimpse rather than as a cut. */
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black var(--edge),
+    black calc(100% - var(--edge)),
+    transparent
+  );
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* The autoplay timer, drawn. Duration and play state are set inline. */
+@keyframes carousel-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.carousel-fill {
+  animation-name: carousel-fill;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+
+/* ─────────────────────────────────────────────────────────────
    Reduced motion — the page stays whole, it just stops moving.
    ───────────────────────────────────────────────────────────── */
 
