@@ -198,6 +198,33 @@ export const cases: CaseStudy[] = [
     },
     href: "https://eeyesee.com",
   },
+  {
+    id: "travel-now-madeira",
+    name: "Travel Now Madeira",
+    logo: {
+      src: "/cases/travel-now-madeira.png",
+      width: 600,
+      height: 498,
+      alt: "Travel Now Madeira",
+      plate: "#0b0b0c",
+      compact: true,
+    },
+    what: [
+      {
+        en: "Website",
+        pt: "Website",
+        es: "Sitio web",
+        de: "Website",
+      },
+    ],
+    body: {
+      en: "A local travel agency running tours and airport transfers across Madeira.",
+      pt: "Uma agência de viagens local, com tours e transfers do aeroporto por toda a Madeira.",
+      es: "Una agencia de viajes local, con tours y traslados al aeropuerto por toda Madeira.",
+      de: "Ein Reisebüro vor Ort, mit Touren und Flughafentransfers auf ganz Madeira.",
+    },
+    href: "https://www.travelnowmadeira.com",
+  },
 ];
 
 export function publishedCases(): CaseStudy[] {
