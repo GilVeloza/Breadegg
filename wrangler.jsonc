@@ -26,11 +26,11 @@
 	},
 	"d1_databases": [
 		{
-			// The call bookings (lib/booking-store.ts). Create it once with
-			// `npx wrangler d1 create breadegg-bookings` and paste the id it prints.
+			// The call bookings (lib/booking-store.ts), in western Europe. The
+			// table comes from migrations/: `npm run db:migrate`.
 			"binding": "BOOKINGS",
 			"database_name": "breadegg-bookings",
-			"database_id": "00000000-0000-0000-0000-000000000000",
+			"database_id": "0e0c2129-7e2e-4d60-9c51-b5c506381875",
 			"migrations_dir": "migrations"
 		}
 	],
