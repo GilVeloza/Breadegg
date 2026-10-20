@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
+import { hasLocale } from "next-intl";
+import { routing } from "@/i18n/routing";
 import { mailer } from "@/lib/email";
+import { renderEmail } from "@/lib/email-template";
+import { LANGUAGE_NAMES_ES } from "@/lib/intl";
 import { throttle } from "@/lib/throttle";
 
 const throttled = throttle(3);
@@ -22,10 +26,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  const name = String(body.name ?? "").trim();
-  const email = String(body.email ?? "").trim();
-  const company = String(body.company ?? "").trim();
-  const message = String(body.message ?? "").trim();
+  const name = String(body.name ?? "").trim().slice(0, 200);
+  const email = String(body.email ?? "").trim().slice(0, 200);
+  const company = String(body.company ?? "").trim().slice(0, 200);
+  const message = String(body.message ?? "").trim().slice(0, 4000);
+  const locale = hasLocale(routing.locales, body.locale)
+    ? body.locale
+    : routing.defaultLocale;
 
   if (!name || !message || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
     return NextResponse.json({ error: "invalid" }, { status: 400 });
@@ -37,18 +44,40 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "not_configured" }, { status: 500 });
   }
 
+  // The studio reads this one in Spanish.
+  const details = [
+    { label: "Email", value: email, href: `mailto:${email}` },
+    { label: "Empresa", value: company || "—" },
+    { label: "Idioma de la web", value: LANGUAGE_NAMES_ES[locale] ?? locale },
+  ];
+
   try {
     await mail.send({
       to: [mail.inbox],
       replyTo: email,
-      subject: `New enquiry: ${name}${company ? ` · ${company}` : ""}`,
+      subject: `Nuevo mensaje: ${name}${company ? ` · ${company}` : ""}`,
       text: [
-        `Name:    ${name}`,
-        `Email:   ${email}`,
-        `Company: ${company || "not given"}`,
+        "Nuevo mensaje desde el formulario de breadegg.com.",
+        "",
+        `Nombre: ${name}`,
+        ...details.map((d) => `${d.label}: ${d.value}`),
         "",
         message,
       ].join("\n"),
+      html: renderEmail({
+        lang: "es",
+        preheader: message.slice(0, 140),
+        eyebrow: "Nuevo mensaje desde la web",
+        title: name,
+        subtitle: company || email,
+        details,
+        quote: { label: "Mensaje", text: message },
+        cta: {
+          label: `Responder a ${name}`,
+          href: `mailto:${email}?subject=${encodeURIComponent("Re: Breadegg")}`,
+        },
+        footer: "breadegg.com · Formulario de contacto",
+      }),
     });
     return NextResponse.json({ ok: true });
   } catch (cause) {

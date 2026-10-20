@@ -5,7 +5,8 @@ import { routing } from "@/i18n/routing";
 import { BOOKING, openDays } from "@/content/booking";
 import { bookingStore, type BookingStore } from "@/lib/booking-store";
 import { mailer } from "@/lib/email";
-import { intlLocale } from "@/lib/intl";
+import { renderEmail } from "@/lib/email-template";
+import { LANGUAGE_NAMES_ES, intlLocale } from "@/lib/intl";
 import { SITE_URL } from "@/lib/site";
 import { throttle } from "@/lib/throttle";
 
@@ -77,6 +78,25 @@ function calendarFile(start: Date, summary: string, description: string) {
   ].join("\r\n");
 }
 
+/** Capital first letter: Intl writes "miércoles", a heading wants "Miércoles". */
+function sentence(text: string, locale: string) {
+  return text.charAt(0).toLocaleUpperCase(intlLocale(locale)) + text.slice(1);
+}
+
+/** Opens Google Calendar with the call filled in, ready to save. */
+function googleCalendarUrl(start: Date, title: string, details: string) {
+  const stamp = (d: Date) => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+  const end = new Date(start.getTime() + BOOKING.callMinutes * 60_000);
+  const params = new URLSearchParams({
+    action: "TEMPLATE",
+    text: title,
+    dates: `${stamp(start)}/${stamp(end)}`,
+    details,
+    location: "Google Meet",
+  });
+  return `https://calendar.google.com/calendar/render?${params}`;
+}
+
 export async function POST(request: Request) {
   if (throttled(request)) {
     return NextResponse.json({ error: "rate_limited" }, { status: 429 });
@@ -125,32 +145,56 @@ export async function POST(request: Request) {
   if (!claimed) return NextResponse.json({ error: "taken" }, { status: 409 });
 
   const start = new Date(slot);
+  // The visitor hears back in the language the site was in when they booked.
+  const t = await getTranslations({ locale, namespace: "booking.email" });
   const theirs = when(start, locale, timeZone);
-  const madeira = when(start, "en-GB", BOOKING.timeZone);
+  const madeira = when(start, "es", BOOKING.timeZone);
+  const theirsInSpanish = when(start, "es", timeZone);
+  const subject = t("subject", { when: theirs });
 
   // Gil hears first. If that fails the day goes back, so nobody is booked
   // into a call that nobody knows about.
   try {
+    const studio = {
+      details: [
+        { label: "Nombre", value: name },
+        { label: "Email", value: email, href: `mailto:${email}` },
+        { label: "Empresa", value: company || "—" },
+        { label: "Su hora", value: `${theirsInSpanish} (${timeZone})` },
+        { label: "Idioma de la web", value: LANGUAGE_NAMES_ES[locale] ?? locale },
+      ],
+      footnote: `Mándale el enlace de Google Meet antes de la llamada. Para cancelarla, escríbele y borra la fila del ${day.date} en D1 (breadegg-bookings): el día vuelve a quedar libre.`,
+    };
     await mail.send({
       to: [mail.inbox],
       replyTo: email,
-      subject: `Call booked: ${name}${company ? ` · ${company}` : ""} · ${madeira}`,
+      subject: `Llamada reservada: ${name}${company ? ` · ${company}` : ""} · ${madeira}`,
       text: [
-        "A call was booked on breadegg.com.",
+        "Nueva llamada reservada en breadegg.com.",
         "",
-        `When:       ${madeira} (Madeira)`,
-        `Their time: ${theirs} (${timeZone})`,
-        `Name:       ${name}`,
-        `Email:      ${email}`,
-        `Company:    ${company || "not given"}`,
-        `Language:   ${locale}`,
+        `Cuándo:  ${madeira} (hora de Madeira) · 15 minutos`,
+        ...studio.details.map((d) => `${d.label}: ${d.value}`),
         "",
-        "What they want to talk about:",
-        message || "(nothing written)",
+        "De qué quiere hablar:",
+        message || "No escribió nada.",
         "",
-        "Send them the Google Meet link before the call. To cancel, write to them",
-        `and delete the ${day.date} row in D1 (breadegg-bookings) so the day opens again.`,
+        studio.footnote,
       ].join("\n"),
+      html: renderEmail({
+        lang: "es",
+        preheader: `${name} ha reservado una llamada de 15 minutos.`,
+        eyebrow: "Nueva llamada reservada",
+        title: sentence(madeira, "es"),
+        subtitle: "Hora de Madeira · 15 minutos",
+        details: studio.details,
+        quote: { label: "De qué quiere hablar", text: message || "No escribió nada." },
+        cta: {
+          label: `Responder a ${name}`,
+          href: `mailto:${email}?subject=${encodeURIComponent(`Re: ${subject}`)}`,
+        },
+        footnote: studio.footnote,
+        footer: "breadegg.com · Reservas",
+      }),
     });
   } catch (cause) {
     await store.release(day.date).catch(() => {});
@@ -161,21 +205,36 @@ export async function POST(request: Request) {
   // The booking stands from here: Gil has it and can follow up by hand even
   // if the visitor's confirmation bounces.
   try {
-    const t = await getTranslations({ locale, namespace: "booking.email" });
     await mail.send({
       to: [email],
       replyTo: mail.inbox,
-      subject: t("subject", { when: theirs }),
+      subject,
       text: [
         t("greeting", { name }),
         "",
         t("booked", { when: theirs, timeZone }),
         t("meet"),
+        t("calendarNote"),
         t("change"),
         ...(message ? ["", t("yours"), message] : []),
         "",
         t("sign"),
       ].join("\n"),
+      html: renderEmail({
+        lang: locale,
+        preheader: t("booked", { when: theirs, timeZone }),
+        eyebrow: t("eyebrow"),
+        title: sentence(theirs, locale),
+        subtitle: t("duration", { timeZone }),
+        paragraphs: [t("greeting", { name }), t("meet")],
+        quote: message ? { label: t("yours"), text: message } : undefined,
+        cta: {
+          label: t("calendar"),
+          href: googleCalendarUrl(start, t("summary"), t("meet")),
+        },
+        footnote: `${t("calendarNote")}\n${t("change")}`,
+        footer: "Breadegg · Madeira, Portugal · breadegg.com",
+      }),
       attachments: [
         {
           filename: "breadegg-call.ics",

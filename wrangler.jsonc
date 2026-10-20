@@ -9,6 +9,15 @@
 	"main": ".open-next/worker.js",
 	"compatibility_date": "2026-10-20",
 	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+	// The site lives at breadegg.com, so no second public copy on workers.dev.
+	"workers_dev": false,
+	"preview_urls": false,
+	// The site's own addresses. www answers too, and proxy.ts redirects it to the
+	// bare domain.
+	"routes": [
+		{ "pattern": "breadegg.com", "custom_domain": true },
+		{ "pattern": "www.breadegg.com", "custom_domain": true }
+	],
 	"assets": {
 		"directory": ".open-next/assets",
 		"binding": "ASSETS"

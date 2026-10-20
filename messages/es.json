@@ -537,11 +537,15 @@
       "subject": "Tu llamada con Breadegg: {when}",
       "greeting": "Hola, {name}:",
       "booked": "Tu llamada de 15 minutos con Breadegg está reservada para el {when} ({timeZone}).",
-      "meet": "Gil te enviará el enlace de Google Meet antes de la llamada. Con el archivo adjunto la añades a tu calendario.",
+      "meet": "Gil te enviará el enlace de Google Meet antes de la llamada.",
       "change": "¿Necesitas otra hora? Responde a este email.",
       "yours": "Lo que nos contaste:",
       "sign": "Breadegg",
-      "summary": "Llamada con Breadegg"
+      "summary": "Llamada con Breadegg",
+      "eyebrow": "Llamada reservada",
+      "duration": "15 minutos · hora de {timeZone}",
+      "calendar": "Añadir a Google Calendar",
+      "calendarNote": "¿Usas otro calendario? Abre el archivo adjunto."
     }
   }
 }

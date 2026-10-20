@@ -537,11 +537,15 @@
       "subject": "Ihr Gespräch mit Breadegg: {when}",
       "greeting": "Hallo {name},",
       "booked": "Ihr 15-minütiges Gespräch mit Breadegg ist gebucht für {when} ({timeZone}).",
-      "meet": "Gil schickt Ihnen den Google-Meet-Link vor dem Gespräch. Mit der angehängten Datei tragen Sie es in Ihren Kalender ein.",
+      "meet": "Gil schickt Ihnen den Google-Meet-Link vor dem Gespräch.",
       "change": "Brauchen Sie einen anderen Termin? Antworten Sie einfach auf diese E-Mail.",
       "yours": "Was Sie uns geschrieben haben:",
       "sign": "Breadegg",
-      "summary": "Gespräch mit Breadegg"
+      "summary": "Gespräch mit Breadegg",
+      "eyebrow": "Gespräch gebucht",
+      "duration": "15 Minuten · Zeitzone {timeZone}",
+      "calendar": "Zu Google Kalender hinzufügen",
+      "calendarNote": "Sie nutzen einen anderen Kalender? Öffnen Sie die angehängte Datei."
     }
   }
 }

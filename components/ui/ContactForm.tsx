@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { track } from "@/lib/analytics";
 
 type State = "idle" | "sending" | "sent" | "error";
@@ -11,6 +11,7 @@ export const fieldClass =
 
 export default function ContactForm() {
   const t = useTranslations("contact.form");
+  const locale = useLocale();
   const [state, setState] = useState<State>("idle");
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -49,6 +50,9 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-4">
+      {/* So the studio knows which language to answer in. */}
+      <input type="hidden" name="locale" value={locale} />
+
       {/* Bots fill this; people never see it. */}
       <div aria-hidden="true" className="absolute -left-[9999px]">
         <label>
