@@ -1,0 +1,44 @@
+// The site on Cloudflare Workers, through OpenNext (https://opennext.js.org/cloudflare).
+// Build and deploy with `npm run deploy`; preview the production build locally
+// with `npm run preview`.
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "breadegg",
+	// The Breadegg Cloudflare account, so a deploy can never land in another one.
+	"account_id": "9c35d77417f595016e034924f0113e86",
+	"main": ".open-next/worker.js",
+	"compatibility_date": "2026-10-20",
+	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"services": [
+		{
+			// OpenNext calls back into its own worker; the name must match "name" above.
+			"binding": "WORKER_SELF_REFERENCE",
+			"service": "breadegg"
+		}
+	],
+	// next/image optimisation through Cloudflare Images.
+	"images": {
+		"binding": "IMAGES"
+	},
+	"d1_databases": [
+		{
+			// The call bookings (lib/booking-store.ts). Create it once with
+			// `npx wrangler d1 create breadegg-bookings` and paste the id it prints.
+			"binding": "BOOKINGS",
+			"database_name": "breadegg-bookings",
+			"database_id": "00000000-0000-0000-0000-000000000000",
+			"migrations_dir": "migrations"
+		}
+	],
+	// Not secret. RESEND_API_KEY is: set it with `npx wrangler secret put RESEND_API_KEY`.
+	"vars": {
+		"CONTACT_TO_EMAIL": "hello@breadegg.com"
+	},
+	"observability": {
+		"enabled": true
+	}
+}

@@ -19,5 +19,5 @@ export default function EggStage({
   size?: string;
   className?: string;
 }) {
-  return <CssEgg size={size} className={className} />;
+  return <CssEgg size={size} className={className} jelly />;
 }

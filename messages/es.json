@@ -1,21 +1,25 @@
 {
   "meta": {
-    "title": "Breadegg®",
-    "description": "Convertimos ideas en productos inteligentes. IA, software y diseño, construidos como una sola cosa. Desde Madeira, Portugal."
+    "title": "Breadegg · Diseño, webs, apps e IA por suscripción",
+    "description": "Tu equipo de producto por suscripción: diseño, webs, apps y automatización con IA para startups y fundadores. Una cuota fija al mes; pausa o cancela cuando quieras. En remoto desde Portugal, en 4 idiomas."
   },
   "nav": {
+    "work": "Trabajos",
+    "plans": "Precio",
     "contact": "Contacto",
     "language": "Idioma",
     "skip": "Saltar al contenido"
   },
   "hero": {
     "title": "Creamos cosas imposibles de ignorar.",
-    "location": "Madeira, Portugal",
-    "scroll": "Bajar"
+    "subtitle": "Tu equipo de producto por suscripción: diseño, webs, apps e IA. Pausa o cancela cuando quieras.",
+    "location": "En remoto desde Portugal · 4 idiomas",
+    "scroll": "Bajar",
+    "cta": "Ver precio"
   },
   "manifesto": {
-    "line1": "No necesitas otra agencia.",
-    "line2": "Nos necesitas a nosotros.",
+    "line1": "Cuatro proveedores.",
+    "line2": "O uno que lo haga todo.",
     "body": "La mayoría de las empresas compran su futuro a trozos. La marca en un sitio. La web en otro. El software en un tercero. Y una herramienta de IA que nadie abre. Cuatro facturas, cuatro hojas de ruta, y nada que encaje.",
     "close": "Nosotros construimos la cosa entera. Porque la cosa entera es el punto."
   },
@@ -40,8 +44,19 @@
       "Identidad de marca",
       "Design systems",
       "UI/UX",
-      "Webs"
+      "Webs",
+      "SEO",
+      "Posicionamiento en IA (GEO)"
     ]
+  },
+  "strip": {
+    "label": "Marcas con las que hemos trabajado"
+  },
+  "cta": {
+    "getStarted": "Empezar",
+    "learnMore": "Saber más",
+    "talk": "Hablemos",
+    "freeCall": "Reservar una llamada de 15 minutos"
   },
   "cases": {
     "eyebrow": "Trabajos seleccionados",
@@ -52,20 +67,426 @@
     "pause": "Pausar",
     "play": "Reproducir"
   },
-  "madeira": {
-    "eyebrow": "Dónde estamos",
-    "title": "Construido en una isla del Atlántico.",
-    "body": "Madeira es un mercado pequeño que se comporta como un laboratorio. Hoteles, alojamiento turístico, restaurantes y agencias, lo bastante densos como para probar una idea en semanas en vez de trimestres. Lo que aguanta aquí, lo llevamos al continente.",
-    "chain": [
-      { "place": "Madeira", "role": "el laboratorio" },
-      { "place": "Mundo", "role": "el mercado" }
+  "testimonials": {
+    "eyebrow": "En sus palabras",
+    "title": "Lo que dicen nuestros clientes.",
+    "pending": "Pendiente: las palabras de {name}"
+  },
+  "fit": {
+    "eyebrow": "Para quién",
+    "title": "Para equipos que prefieren lanzar a contratar.",
+    "items": [
+      {
+        "title": "Tu startup no tiene equipo de producto.",
+        "body": "Contratar a un diseñador, un desarrollador y alguien para la IA lleva meses y tres sueldos. La suscripción cubre los tres, por una cuota fija, desde esta semana."
+      },
+      {
+        "title": "Tu equipo tiene más trabajo que manos.",
+        "body": "Un equipo de producto, de marketing o una agencia con trabajo acumulado. Manda lo que sobra a tu cola: landings, pantallas de app, integraciones, con tu marca si lo necesitas."
+      },
+      {
+        "title": "Una agencia ya te falló.",
+        "body": "Sin presupuestos que crecen ni gestores de cuenta. Una cuota al mes, te responde quien lo construye y puedes pausar o cancelar cuando quieras."
+      }
+    ]
+  },
+  "plans": {
+    "eyebrow": "Precio",
+    "title": "Una suscripción. Todo lo digital.",
+    "note": "Pide todo lo que quieras y recíbelo de pieza en pieza. Lo más grande, como una app nativa, va a precio cerrado.",
+    "steps": [
+      {
+        "name": "Suscríbete",
+        "label": "Hoy",
+        "body": "Eliges el plan y en un día tienes tu propio tablero. No hace falta llamada de ventas, salvo que la quieras."
+      },
+      {
+        "name": "Pide",
+        "label": "Todo lo que quieras",
+        "body": "Añade lo que necesites: páginas, diseños, pantallas de app, automatizaciones. Basta con un texto, un documento o un vídeo corto de Loom."
+      },
+      {
+        "name": "Recibe",
+        "label": "Unos 3 días laborables cada uno",
+        "body": "Los encargos llegan de uno en uno, en el orden que elijas. Los grandes se dividen y llegan por partes."
+      }
     ],
-    "close": "La distancia dejó de importar hace tiempo. El trabajo pasa donde está el problema."
+    "subscription": {
+      "name": "Suscripción mensual",
+      "period": "/mes",
+      "founding": "Precio de fundador para los {seats} primeros clientes, mientras sigan suscritos.",
+      "vat": "IVA aparte cuando corresponda.",
+      "includes": [
+        "Un encargo a la vez, todos los que quieras",
+        "Unos 3 días laborables por encargo",
+        "Diseño, web, pantallas de app, SEO y automatizaciones con IA",
+        "Marcas ilimitadas",
+        "Tu propio tablero, para hasta 2 personas",
+        "El código y las cuentas a tu nombre",
+        "Pausa o cancela cuando quieras"
+      ],
+      "seats": "{open} de {total} plazas libres",
+      "full": "Todas las plazas ocupadas",
+      "start": "Empezar hoy",
+      "waitlist": "Apuntarme a la lista de espera",
+      "call": "Reservar una llamada de 15 minutos"
+    },
+    "perks": [
+      {
+        "title": "Pausa cuando quieras",
+        "body": "¿Este mes no hay tanto trabajo? Pausa, y los días que no hayas usado te esperan hasta 6 meses."
+      },
+      {
+        "title": "Pruébalo una semana",
+        "body": "Si la primera semana no te convence, te devolvemos el 75 % de lo que pagaste. Sin preguntas."
+      },
+      {
+        "title": "Solo 4 a la vez",
+        "body": "El trabajo lo hace una persona, así que hay pocas plazas. Cuando se llenan, hay lista de espera."
+      }
+    ],
+    "projects": {
+      "title": "Demasiado grande para una cola.",
+      "note": "Cuando un trabajo necesita un alcance por escrito y una fecha, va a precio cerrado y se paga en tres hitos. Después del lanzamiento, la suscripción lo mantiene en marcha.",
+      "items": [
+        {
+          "name": "App nativa",
+          "time": "8 a 10 semanas",
+          "price": "Desde 8.900 €",
+          "body": "De la idea a las tiendas: diseño de producto, app nativa para iPhone y Android, su backend e IA.",
+          "includes": [
+            "Diseño de producto",
+            "App para iPhone y Android con backend",
+            "IA integrada",
+            "Publicada en la App Store y Google Play"
+          ],
+          "service": "apps"
+        },
+        {
+          "name": "IA a medida",
+          "time": "6 semanas",
+          "price": "Desde 4.900 €",
+          "body": "Un proceso que le come el tiempo a tu equipo, automatizado y conectado a tus herramientas.",
+          "includes": [
+            "Empieza con un Diagnóstico de una semana (490 €, se descuenta)",
+            "Asistentes, reservas, contactos o informes",
+            "Conectado a las herramientas que ya usas",
+            "14 días en modo borrador"
+          ],
+          "service": "ai-automation"
+        }
+      ]
+    },
+    "projectSteps": [
+      {
+        "name": "Primera llamada",
+        "label": "Gratis · 15 minutos",
+        "body": "Cuéntanos el problema. Si no somos los adecuados, te lo decimos y te señalamos un sitio mejor."
+      },
+      {
+        "name": "Diagnóstico",
+        "label": "1 semana · 490 €, se descuenta del proyecto",
+        "body": "Vemos lo que tienes y te escribimos un plan con precio cerrado y fechas. Si seguimos adelante, se descuenta del proyecto."
+      },
+      {
+        "name": "El proyecto",
+        "label": "Precio cerrado · de 6 a 10 semanas",
+        "body": "Exactamente lo acordado en el Diagnóstico, por escrito. Se paga en tres hitos: 40 %, 40 % y 20 %."
+      }
+    ],
+    "terms": "En los proyectos a precio cerrado, si no cumplimos la fecha de entrega acordada, pagas un 10 % menos por cada semana de retraso, hasta 4 semanas."
+  },
+  "promises": {
+    "eyebrow": "Por escrito",
+    "title": "Lo que prometemos, en el contrato.",
+    "items": [
+      {
+        "title": "Una cuota, cada mes",
+        "body": "La misma cantidad todos los meses. Sin presupuestos, sin horas facturadas, sin sorpresas."
+      },
+      {
+        "title": "Pausa o cancela cuando quieras",
+        "body": "Sin permanencia. Si cancelas, termina con el periodo pagado; si pausas, los días sin usar te esperan hasta 6 meses."
+      },
+      {
+        "title": "Una semana para decidir",
+        "body": "Si la primera semana no te convence, te devolvemos el 75 % del primer mes."
+      },
+      {
+        "title": "Fechas con penalización",
+        "body": "En los proyectos a precio cerrado, un 10 % menos por cada semana de retraso, hasta 4 semanas."
+      },
+      {
+        "title": "IA que no se inventa nada",
+        "body": "Los primeros 14 días, una persona aprueba cada respuesta. Solo responde con tu propio contenido y, si no sabe algo, pasa a una persona."
+      },
+      {
+        "title": "Tuyo desde el primer día",
+        "body": "El código y las cuentas están a tu nombre desde el principio."
+      }
+    ]
+  },
+  "founder": {
+    "eyebrow": "Con quién trabajas",
+    "role": "Fundó Breadegg",
+    "body": "Breadegg lo lleva Gil. Cada encargo lo diseña y lo construye la misma persona que responde a tus mensajes: sin gestores de cuenta ni intermediarios. Por eso solo hay 4 plazas. Cuando un trabajo lo necesita, colaboran freelancers de confianza en traducción y pruebas.",
+    "linkedin": "Gil en LinkedIn"
+  },
+  "faq": {
+    "eyebrow": "Preguntas",
+    "title": "Lo que nos preguntan antes de suscribirse.",
+    "items": [
+      {
+        "q": "¿Qué incluye la suscripción?",
+        "a": "Un equipo de producto por una cuota fija al mes: diseño, webs, pantallas de app, SEO y automatizaciones con IA. Añades encargos a tu tablero y te llegan de uno en uno."
+      },
+      {
+        "q": "¿Qué cuenta como un encargo?",
+        "a": "Cualquier cosa que quepa en más o menos un día de trabajo: una página, una landing, una serie de anuncios, un email, una pantalla de app, una integración sencilla. Lo más grande, como una web entera, se divide en encargos y llega por partes."
+      },
+      {
+        "q": "¿Cuánto tardan los encargos?",
+        "a": "Unos 3 días laborables por encargo, de media. Los grandes llegan por partes, una cada pocos días, hasta terminar."
+      },
+      {
+        "q": "¿Hay un límite de encargos?",
+        "a": "No. Añade todos los que quieras; te llegan de uno en uno, en el orden que elijas."
+      },
+      {
+        "q": "¿Cómo funciona la pausa?",
+        "a": "Se factura en ciclos de 31 días. Si pausas después de 21, los otros 10 se te guardan hasta 6 meses, para usarlos cuando vuelvas."
+      },
+      {
+        "q": "¿Qué no incluye?",
+        "a": "Apps nativas y desarrollos grandes de IA, que van como proyectos a precio cerrado. Tampoco hacemos vídeo, 3D ni impresión compleja."
+      },
+      {
+        "q": "¿Y si no me gusta lo que recibo?",
+        "a": "Lo revisamos hasta que esté bien."
+      },
+      {
+        "q": "¿Hay devoluciones?",
+        "a": "Si en la primera semana no te convence, te devolvemos el 75 %. Después, el trabajo entregado no se devuelve, pero puedes cancelar cuando quieras."
+      },
+      {
+        "q": "¿De quién es el trabajo?",
+        "a": "Tuyo. El código, los diseños y las cuentas están a tu nombre desde el primer día, y no necesitas la suscripción para conservarlos."
+      },
+      {
+        "q": "¿Dónde estáis y trabajáis con mi país?",
+        "a": "En remoto, desde Portugal, con clientes de cualquier país. Nuestro horario coincide con toda Europa y con la costa este de EE. UU., y trabajamos en inglés, portugués, español y alemán."
+      },
+      {
+        "q": "¿Cómo envío los encargos?",
+        "a": "En tu propio tablero. Escribe lo que necesitas, comparte un documento o un diseño, o graba un vídeo corto de Loom si prefieres explicarlo hablando."
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": "Servicios",
+    "home": "Inicio",
+    "includes": "Qué incluye",
+    "forWho": "Para quién es",
+    "how": "Cómo funciona",
+    "work": "Trabajos relacionados",
+    "faq": "Preguntas",
+    "items": {
+      "websites": {
+        "name": "Webs",
+        "metaTitle": "Diseño y desarrollo web por suscripción · Breadegg",
+        "metaDescription": "Webs y landings para startups y empresas en crecimiento: diseño, desarrollo y SEO en hasta 4 idiomas, incluidos en una suscripción con cuota fija. Pausa o cancela cuando quieras.",
+        "h1": "Webs que te traen clientes.",
+        "intro": "Diseñamos y construimos tu web, tus landings o tu tienda online, en hasta 4 idiomas y preparadas para que te encuentren en Google y en las búsquedas con IA. Todo entra en la suscripción: sin presupuestos, una cuota fija al mes.",
+        "includes": [
+          "Identidad de marca (logo, colores y tipografía), o la que ya tienes",
+          "Diseño y desarrollo, pensados primero para el móvil",
+          "Hasta 4 idiomas",
+          "Tienda online o reservas, si las necesitas",
+          "Lo básico de SEO para Google y para la IA",
+          "Hosting, dominio y analítica a tu nombre"
+        ],
+        "forWho": [
+          "Startups que necesitan una web y landings al ritmo del producto",
+          "Empresas cuya web es vieja, lenta o no trae registros",
+          "Fundadores que preparan un lanzamiento, una ronda o un mercado nuevo"
+        ],
+        "faq": [
+          {
+            "q": "¿Cuánto tarda una web?",
+            "a": "Una landing suele tardar unos días. Una web entera se divide en encargos y llega por partes, normalmente en 2 a 4 semanas."
+          },
+          {
+            "q": "¿Cuánto cuesta una web?",
+            "a": "Está incluida en la suscripción: una cuota fija al mes, sin presupuesto aparte. Puedes pausarla o cancelarla cuando quieras."
+          },
+          {
+            "q": "¿Podéis trabajar con la marca que ya tengo?",
+            "a": "Sí. Si ya tienes logo y colores, construimos sobre ellos. Si no, primero diseñamos la marca."
+          },
+          {
+            "q": "¿Mi web aparecerá en Google?",
+            "a": "Todas las webs incluyen lo básico de SEO: velocidad, estructura, metadatos y datos estructurados, para que Google y los asistentes de IA la entiendan. Para ir más allá, mira SEO y búsqueda con IA."
+          }
+        ]
+      },
+      "brand": {
+        "name": "Identidad de marca",
+        "metaTitle": "Diseño de marca y logo para empresas · Breadegg",
+        "metaDescription": "Identidad de marca para startups y productos: nombre, logo, colores, tipografía y una guía para usarlos, lista para tu web, tu app y tus redes. Incluida en la suscripción.",
+        "h1": "Una marca que se recuerda.",
+        "intro": "Diseñamos la identidad de tu negocio o de tu producto: logo, colores, tipografía y las reglas para usarlos. Pensada para funcionar en tu web, tu app y todo lo demás desde el primer día.",
+        "includes": [
+          "Nombre, si lo necesitas",
+          "Logo y sus versiones",
+          "Colores y tipografía",
+          "Una guía breve de uso",
+          "Archivos listos para web, app, imprenta y redes",
+          "Aplicada a tu web o tu app, si la construimos"
+        ],
+        "forWho": [
+          "Negocios y productos nuevos que necesitan nombre y cara",
+          "Negocios cuya imagen ya no refleja lo que son",
+          "Fundadores que preparan un lanzamiento, una ronda o una subvención"
+        ],
+        "faq": [
+          {
+            "q": "¿Qué incluye una identidad de marca?",
+            "a": "El logo y sus versiones, los colores, la tipografía, una guía breve de uso y todos los archivos que necesitas para web, app, imprenta y redes."
+          },
+          {
+            "q": "¿Cuánto tarda?",
+            "a": "Depende del alcance. En la suscripción llega encargo a encargo; una identidad completa suele estar en 2 a 4 semanas."
+          },
+          {
+            "q": "¿También podéis hacer la web o la app?",
+            "a": "Sí. Esa es la idea de Breadegg: la marca, la web y la app hechas como una sola cosa, por el mismo equipo."
+          },
+          {
+            "q": "¿De quién es la marca?",
+            "a": "Tuya. Recibes todos los archivos originales, a tu nombre."
+          }
+        ]
+      },
+      "apps": {
+        "name": "Apps",
+        "metaTitle": "Desarrollo de apps para iPhone y Android con IA · Breadegg",
+        "metaDescription": "Apps nativas para iPhone y Android con backend e IA, de la idea a la App Store y Google Play: diseño de producto, desarrollo y lanzamiento a precio cerrado y por escrito.",
+        "h1": "Tu app, de la idea a la App Store y Google Play.",
+        "intro": "Diseñamos y construimos apps nativas con su backend y su IA, y las publicamos en la tienda. Un solo equipo para el producto, el diseño, el código y el lanzamiento.",
+        "includes": [
+          "Diseño de producto: qué hace la app y para quién",
+          "App nativa para iPhone y Android, y Apple Watch cuando tiene sentido",
+          "Backend, cuentas y pagos",
+          "Funciones de IA dentro de la app",
+          "Publicación en la App Store y Google Play",
+          "Una web para la app"
+        ],
+        "forWho": [
+          "Fundadores con una idea de app y sin equipo técnico",
+          "Empresas que quieren una app para sus clientes",
+          "Productos que necesitan la IA integrada, no añadida al final"
+        ],
+        "faq": [
+          {
+            "q": "¿Cuánto se tarda en hacer una app?",
+            "a": "Una primera versión lleva de 8 a 10 semanas, del diseño a la App Store y Google Play. Las fechas van por escrito en el Diagnóstico."
+          },
+          {
+            "q": "¿Cuánto cuesta una app?",
+            "a": "Una primera versión empieza en 8.900 €. Después de una llamada de 15 minutos y del Diagnóstico tienes el precio exacto por escrito, en tres hitos."
+          },
+          {
+            "q": "¿De quién son la app y el código?",
+            "a": "Tuyos. El código y las cuentas, incluida la de la App Store, están a tu nombre desde el primer día."
+          },
+          {
+            "q": "¿La app puede usar IA?",
+            "a": "Sí. Rackers, nuestra propia app, usa IA en iPhone y Apple Watch. Integramos la IA en el producto donde ahorra tiempo o aporta algo real."
+          }
+        ]
+      },
+      "ai-automation": {
+        "name": "IA y automatización",
+        "metaTitle": "IA y automatización para startups y equipos · Breadegg",
+        "metaDescription": "Asistentes de IA y automatizaciones para empresas: respuestas a clientes en 4 idiomas, reservas, contactos e informes, conectados a tus herramientas. Las automatizaciones sencillas entran en la suscripción.",
+        "h1": "IA que le ahorra tiempo de verdad a tu negocio.",
+        "intro": "Encontramos el proceso en el que la IA te ahorra más tiempo y lo automatizamos: conectado a las herramientas que ya usas, y con una persona aprobando cada respuesta durante los primeros 14 días.",
+        "includes": [
+          "Un Diagnóstico de cómo trabajas, para elegir el proceso adecuado",
+          "Un asistente que responde a tus clientes en 4 idiomas, en tu web, por email o por mensaje",
+          "Reservas, citas y recordatorios",
+          "Seguimiento de contactos e informes, automáticos",
+          "Conectado a las herramientas que ya usas",
+          "Modo borrador durante 14 días: una persona aprueba cada respuesta"
+        ],
+        "forWho": [
+          "Negocios que responden las mismas preguntas todos los días",
+          "Equipos que copian datos de una herramienta a otra a mano",
+          "Quien quiere usar IA y no sabe por dónde empezar"
+        ],
+        "faq": [
+          {
+            "q": "¿Por dónde empiezo con la IA en mi negocio?",
+            "a": "Por el Diagnóstico: vemos cómo trabajas y elegimos el proceso en el que la IA te ahorra más tiempo. Si te basta una herramienta sencilla, te lo decimos."
+          },
+          {
+            "q": "¿La IA puede funcionar con las herramientas que ya uso?",
+            "a": "Sí. La conectamos con lo que ya tienes, y quien lleva tu web puede seguir haciéndolo."
+          },
+          {
+            "q": "¿Y si la IA dice algo que no es verdad?",
+            "a": "Los primeros 14 días, una persona aprueba cada respuesta. Solo responde con tu propio contenido y, si no sabe algo, pasa a una persona."
+          },
+          {
+            "q": "¿Cuánto tarda?",
+            "a": "Unas 6 semanas desde el Diagnóstico hasta tenerlo funcionando."
+          }
+        ]
+      },
+      "seo-geo": {
+        "name": "SEO y búsqueda con IA",
+        "metaTitle": "SEO y posicionamiento en IA (GEO) · Breadegg",
+        "metaDescription": "Que te encuentren en Google y en las respuestas de ChatGPT, Claude, Perplexity y Gemini: SEO técnico, contenido y datos estructurados. Incluido en la suscripción.",
+        "h1": "Que te encuentren en Google y en las respuestas de la IA.",
+        "intro": "Cada vez más gente pregunta a ChatGPT, Gemini o Perplexity en lugar de buscar. Hacemos que tu negocio aparezca en los dos sitios: en los resultados de Google y en las respuestas de los asistentes de IA.",
+        "includes": [
+          "Una revisión de cómo ven hoy tu negocio Google y los asistentes de IA",
+          "SEO técnico: velocidad, estructura, metadatos y sitemap",
+          "Datos estructurados, para que las máquinas entiendan quién eres, qué vendes y dónde",
+          "Páginas y respuestas para las preguntas que de verdad hacen tus clientes",
+          "llms.txt y acceso para los rastreadores de IA",
+          "Perfil de Empresa de Google y Search Console configurados"
+        ],
+        "forWho": [
+          "Negocios que no aparecen cuando buscan lo que venden",
+          "Webs con visitas pero sin contactos",
+          "Negocios que quieren que los asistentes de IA los recomienden"
+        ],
+        "faq": [
+          {
+            "q": "¿Qué es el GEO?",
+            "a": "Generative Engine Optimization: hacer que tu negocio aparezca en las respuestas de asistentes de IA como ChatGPT, Claude, Perplexity y Gemini, igual que el SEO lo hace en Google."
+          },
+          {
+            "q": "¿El SEO y el GEO son distintos?",
+            "a": "Comparten la base: una web rápida, bien estructurada y con contenido claro. El GEO añade lo que leen los asistentes de IA: datos estructurados, respuestas directas a preguntas reales y un archivo llms.txt."
+          },
+          {
+            "q": "¿Cuándo se ven los resultados?",
+            "a": "El trabajo técnico lleva semanas. Las posiciones y las menciones en respuestas de IA tardan más, normalmente meses, y dependen de tu mercado. Te decimos qué esperar antes de empezar."
+          },
+          {
+            "q": "¿Garantizáis el primer puesto en Google?",
+            "a": "No. Nadie honesto puede hacerlo. Garantizamos el trabajo por escrito y te enseñamos qué ha cambiado."
+          }
+        ]
+      }
+    }
   },
   "contact": {
     "eyebrow": "Empieza aquí",
     "title": "Tráenos un problema.",
-    "body": "No una especificación, no una lista de funcionalidades. La cosa que te está costando tiempo o dinero. Si no somos los adecuados, te lo decimos y te señalamos un sitio mejor.",
+    "body": "No una especificación, no una lista de funcionalidades. La cosa que te está costando tiempo o dinero. Reserva una llamada de 15 minutos o escríbenos aquí abajo. Si no somos los adecuados, te lo decimos y te señalamos un sitio mejor.",
     "form": {
       "name": "Nombre",
       "email": "Email",
@@ -79,10 +500,48 @@
       "required": "Obligatorio"
     },
     "or": "o",
-    "book": "Reservar una llamada de 30 minutos"
+    "tabs": {
+      "book": "Reservar llamada",
+      "write": "Prefiero escribir"
+    }
   },
   "footer": {
-    "location": "Funchal, Madeira",
-    "copyright": "© {year} Breadegg®"
+    "location": "Madeira, Portugal",
+    "copyright": "© {year} Breadegg",
+    "services": "Servicios"
+  },
+  "consent": {
+    "label": "Consentimiento de analítica",
+    "text": "Nos gustaría usar Google Analytics para ver qué páginas se leen. Solo si dices que sí; no se rastrea nada más.",
+    "accept": "Aceptar",
+    "decline": "No, gracias",
+    "settings": "Ajustes de cookies"
+  },
+  "booking": {
+    "intro": "15 minutos con Gil, de martes a jueves por la tarde. Elige un día y una hora.",
+    "timeZone": "Horas en tu zona horaria ({timeZone})",
+    "loading": "Cargando horas libres…",
+    "none": "No quedan horas libres en las próximas dos semanas.",
+    "unavailable": "Ahora mismo no se puede reservar.",
+    "write": "Escríbenos en su lugar",
+    "pickDay": "Día",
+    "pickTime": "Hora",
+    "change": "Cambiar",
+    "message": "¿De qué te gustaría hablar?",
+    "submit": "Reservar la llamada",
+    "sending": "Reservando…",
+    "success": "Reservada para el {when}. Te hemos enviado los detalles a {email}, y Gil te mandará el enlace de Google Meet antes de la llamada.",
+    "taken": "Esa hora se acaba de ocupar. Elige otra.",
+    "error": "No se ha podido reservar. Escríbenos y buscamos una hora.",
+    "email": {
+      "subject": "Tu llamada con Breadegg: {when}",
+      "greeting": "Hola, {name}:",
+      "booked": "Tu llamada de 15 minutos con Breadegg está reservada para el {when} ({timeZone}).",
+      "meet": "Gil te enviará el enlace de Google Meet antes de la llamada. Con el archivo adjunto la añades a tu calendario.",
+      "change": "¿Necesitas otra hora? Responde a este email.",
+      "yours": "Lo que nos contaste:",
+      "sign": "Breadegg",
+      "summary": "Llamada con Breadegg"
+    }
   }
 }

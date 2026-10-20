@@ -1,21 +1,25 @@
 {
   "meta": {
-    "title": "Breadegg®",
-    "description": "Wir machen aus Ideen intelligente Produkte. KI, Software und Design, als eine Sache gebaut. Aus Madeira, Portugal."
+    "title": "Breadegg · Design, Websites, Apps und KI im Abo",
+    "description": "Ihr Produktteam im Abo: Design, Websites, Apps und KI-Automatisierung für Startups und Gründungsteams. Ein fester Monatspreis, jederzeit pausieren oder kündigen. Remote aus Portugal, in 4 Sprachen."
   },
   "nav": {
+    "work": "Arbeiten",
+    "plans": "Preis",
     "contact": "Kontakt",
     "language": "Sprache",
     "skip": "Zum Inhalt springen"
   },
   "hero": {
     "title": "Wir bauen Dinge, die niemand ignorieren kann.",
-    "location": "Madeira, Portugal",
-    "scroll": "Scrollen"
+    "subtitle": "Ihr Produktteam im Abo: Design, Web, Apps und KI. Jederzeit pausieren oder kündigen.",
+    "location": "Remote aus Portugal · 4 Sprachen",
+    "scroll": "Scrollen",
+    "cta": "Preis ansehen"
   },
   "manifesto": {
-    "line1": "Sie brauchen keine weitere Agentur.",
-    "line2": "Sie brauchen uns.",
+    "line1": "Vier Dienstleister.",
+    "line2": "Oder einer, der alles macht.",
     "body": "Die meisten Unternehmen kaufen ihre Zukunft in Einzelteilen. Die Marke hier. Die Website dort. Software vom Dritten. Und ein KI-Werkzeug, das niemand öffnet. Vier Rechnungen, vier Roadmaps, und nichts, was zusammenpasst.",
     "close": "Wir bauen das Ganze. Weil das Ganze der Punkt ist."
   },
@@ -40,8 +44,19 @@
       "Markenidentität",
       "Design-Systeme",
       "UI/UX",
-      "Websites"
+      "Websites",
+      "SEO",
+      "KI-Suche (GEO)"
     ]
+  },
+  "strip": {
+    "label": "Marken, für die wir gearbeitet haben"
+  },
+  "cta": {
+    "getStarted": "Jetzt starten",
+    "learnMore": "Mehr erfahren",
+    "talk": "Sprechen wir",
+    "freeCall": "15-Minuten-Gespräch buchen"
   },
   "cases": {
     "eyebrow": "Ausgewählte Arbeiten",
@@ -52,20 +67,426 @@
     "pause": "Pausieren",
     "play": "Abspielen"
   },
-  "madeira": {
-    "eyebrow": "Wo wir sind",
-    "title": "Gebaut auf einer Insel im Atlantik.",
-    "body": "Madeira ist ein kleiner Markt, der sich wie ein Labor verhält. Hotels, Ferienvermietung, Restaurants und Agenturen, dicht genug, um eine Idee in Wochen statt in Quartalen zu testen. Was hier standhält, nehmen wir aufs Festland.",
-    "chain": [
-      { "place": "Madeira", "role": "das Labor" },
-      { "place": "Welt", "role": "der Markt" }
+  "testimonials": {
+    "eyebrow": "In ihren Worten",
+    "title": "Was unsere Kunden sagen.",
+    "pending": "Noch ausstehend: die Worte von {name}"
+  },
+  "fit": {
+    "eyebrow": "Für wen",
+    "title": "Für Teams, die lieber launchen als einstellen.",
+    "items": [
+      {
+        "title": "Ihr Startup hat kein Produktteam.",
+        "body": "Eine Designerin, einen Entwickler und jemanden für KI einzustellen dauert Monate und kostet drei Gehälter. Das Abo deckt alle drei ab, zum Festpreis, ab dieser Woche."
+      },
+      {
+        "title": "Ihr Team hat mehr Arbeit als Hände.",
+        "body": "Ein Produkt- oder Marketingteam oder eine Agentur mit vollem Backlog. Schicken Sie den Überhang in Ihre Warteschlange: Landingpages, App-Screens, Integrationen, auf Wunsch unter Ihrer Marke."
+      },
+      {
+        "title": "Eine Agentur hat Sie schon enttäuscht.",
+        "body": "Keine Angebote, die immer weiter wachsen, keine Account-Manager. Ein Preis pro Monat, wer baut, antwortet auch, und Sie können jederzeit pausieren oder kündigen."
+      }
+    ]
+  },
+  "plans": {
+    "eyebrow": "Preis",
+    "title": "Ein Abo. Alles Digitale.",
+    "note": "Beauftragen Sie so viel Sie möchten und erhalten Sie es Stück für Stück. Größere Vorhaben, etwa eine native App, bekommen stattdessen einen Festpreis.",
+    "steps": [
+      {
+        "name": "Abonnieren",
+        "label": "Heute",
+        "body": "Plan wählen, und innerhalb eines Tages haben Sie Ihr eigenes Board. Kein Verkaufsgespräch nötig, außer Sie möchten eins."
+      },
+      {
+        "name": "Beauftragen",
+        "label": "So viel Sie möchten",
+        "body": "Fügen Sie hinzu, was Sie brauchen: Seiten, Designs, App-Screens, Automatisierungen. Ein kurzer Text, ein Dokument oder ein Loom-Video genügt."
+      },
+      {
+        "name": "Erhalten",
+        "label": "Etwa 3 Werktage pro Auftrag",
+        "body": "Aufträge kommen einzeln, in der Reihenfolge, die Sie festlegen. Große werden aufgeteilt und kommen in Teilen."
+      }
     ],
-    "close": "Entfernung spielt schon länger keine Rolle mehr. Die Arbeit passiert dort, wo das Problem ist."
+    "subscription": {
+      "name": "Monatsabo",
+      "period": "/Monat",
+      "founding": "Gründerpreis für die ersten {seats} Kunden, solange Sie dabei bleiben.",
+      "vat": "Zzgl. MwSt., wo zutreffend.",
+      "includes": [
+        "Ein Auftrag nach dem anderen, so viele Sie möchten",
+        "Etwa 3 Werktage pro Auftrag",
+        "Design, Web, App-Screens, SEO und KI-Automatisierungen",
+        "Unbegrenzt viele Marken",
+        "Ihr eigenes Board, für bis zu 2 Personen",
+        "Code und Konten auf Ihren Namen",
+        "Jederzeit pausieren oder kündigen"
+      ],
+      "seats": "{open} von {total} Plätzen frei",
+      "full": "Alle Plätze belegt",
+      "start": "Heute starten",
+      "waitlist": "Auf die Warteliste",
+      "call": "15-Minuten-Gespräch buchen"
+    },
+    "perks": [
+      {
+        "title": "Jederzeit pausieren",
+        "body": "Diesen Monat weniger zu tun? Pausieren Sie, und die ungenutzten Tage bleiben bis zu 6 Monate für Sie reserviert."
+      },
+      {
+        "title": "Eine Woche testen",
+        "body": "Überzeugt Sie die erste Woche nicht, erhalten Sie 75 % zurück. Ohne Fragen."
+      },
+      {
+        "title": "Nur 4 gleichzeitig",
+        "body": "Die Arbeit macht eine Person, deshalb gibt es wenige Plätze. Sind sie voll, gibt es eine Warteliste."
+      }
+    ],
+    "projects": {
+      "title": "Zu groß für eine Warteschlange.",
+      "note": "Braucht ein Vorhaben einen schriftlichen Umfang und einen Termin, bekommt es einen Festpreis, zahlbar in drei Meilensteinen. Nach dem Launch hält das Abo es in Bewegung.",
+      "items": [
+        {
+          "name": "Native App",
+          "time": "8 bis 10 Wochen",
+          "price": "Ab 8.900 €",
+          "body": "Von der Idee in die Stores: Produktdesign, native App für iPhone und Android, Backend und KI.",
+          "includes": [
+            "Produktdesign",
+            "App für iPhone und Android mit Backend",
+            "Integrierte KI",
+            "Im App Store und bei Google Play veröffentlicht"
+          ],
+          "service": "apps"
+        },
+        {
+          "name": "KI nach Maß",
+          "time": "6 Wochen",
+          "price": "Ab 4.900 €",
+          "body": "Ein Prozess, der Ihr Team Zeit kostet, automatisiert und mit Ihren Tools verbunden.",
+          "includes": [
+            "Beginnt mit einer einwöchigen Diagnose (490 €, wird angerechnet)",
+            "Assistenten, Buchungen, Leads oder Berichte",
+            "Verbunden mit den Tools, die Sie schon nutzen",
+            "14 Tage im Entwurfsmodus"
+          ],
+          "service": "ai-automation"
+        }
+      ]
+    },
+    "projectSteps": [
+      {
+        "name": "Erstes Gespräch",
+        "label": "Kostenlos · 15 Minuten",
+        "body": "Erzählen Sie uns das Problem. Wenn wir die Falschen dafür sind, sagen wir es und verweisen Sie weiter."
+      },
+      {
+        "name": "Diagnose",
+        "label": "1 Woche · 490 €, wird angerechnet",
+        "body": "Wir sehen uns an, was Sie haben, und schreiben einen Plan mit Festpreis und Terminen. Wenn Sie weitermachen, wird sie voll angerechnet."
+      },
+      {
+        "name": "Das Projekt",
+        "label": "Festpreis · 6 bis 10 Wochen",
+        "body": "Genau der in der Diagnose vereinbarte Umfang, schriftlich. Bezahlt in drei Raten: 40 %, 40 % und 20 %."
+      }
+    ],
+    "terms": "Verpassen wir bei einem Festpreisprojekt den vereinbarten Liefertermin, zahlen Sie für jede Woche Verspätung 10 % weniger, bis zu 4 Wochen."
+  },
+  "promises": {
+    "eyebrow": "Schriftlich",
+    "title": "Was wir zusagen, im Vertrag.",
+    "items": [
+      {
+        "title": "Ein Preis, jeden Monat",
+        "body": "Jeden Monat derselbe Betrag. Keine Angebote, keine Stundenabrechnung, keine Überraschungen."
+      },
+      {
+        "title": "Jederzeit pausieren oder kündigen",
+        "body": "Keine Mindestlaufzeit. Kündigen Sie, endet es mit dem bezahlten Zeitraum; pausieren Sie, bleiben ungenutzte Tage bis zu 6 Monate erhalten."
+      },
+      {
+        "title": "Eine Woche Bedenkzeit",
+        "body": "Überzeugt Sie die erste Woche nicht, erhalten Sie 75 % des ersten Monats zurück."
+      },
+      {
+        "title": "Termine mit Vertragsstrafe",
+        "body": "Bei Festpreisprojekten 10 % weniger für jede Woche Verspätung, bis zu 4 Wochen."
+      },
+      {
+        "title": "KI, die nichts erfindet",
+        "body": "In den ersten 14 Tagen gibt ein Mensch jede Antwort frei. Sie antwortet nur mit Ihren eigenen Inhalten und übergibt an einen Menschen, wenn sie etwas nicht weiß."
+      },
+      {
+        "title": "Ihres vom ersten Tag an",
+        "body": "Code und Konten laufen von Anfang an auf Ihren Namen."
+      }
+    ]
+  },
+  "founder": {
+    "eyebrow": "Mit wem Sie arbeiten",
+    "role": "Hat Breadegg gegründet",
+    "body": "Breadegg wird von Gil geführt. Jeder Auftrag wird von derselben Person gestaltet und gebaut, die auch Ihre Nachrichten beantwortet: keine Account-Manager, keine Übergaben. Deshalb gibt es nur 4 Plätze. Wenn ein Auftrag es braucht, helfen vertraute Freelancer bei Übersetzung und Tests.",
+    "linkedin": "Gil auf LinkedIn"
+  },
+  "faq": {
+    "eyebrow": "Fragen",
+    "title": "Was man uns vor dem Abo fragt.",
+    "items": [
+      {
+        "q": "Was bekomme ich mit dem Abo?",
+        "a": "Ein Produktteam zum festen Monatspreis: Design, Websites, App-Screens, SEO und KI-Automatisierungen. Sie legen Aufträge auf Ihr Board und erhalten sie einzeln."
+      },
+      {
+        "q": "Was zählt als ein Auftrag?",
+        "a": "Alles, was in etwa einen Arbeitstag passt: eine Seite, eine Landingpage, eine Anzeigenserie, eine E-Mail, ein App-Screen, eine einfache Integration. Größeres, etwa eine komplette Website, wird in Aufträge aufgeteilt und in Teilen geliefert."
+      },
+      {
+        "q": "Wie schnell bekomme ich meine Aufträge?",
+        "a": "Im Schnitt etwa 3 Werktage pro Auftrag. Größere kommen in Teilen, alle paar Tage einer, bis alles fertig ist."
+      },
+      {
+        "q": "Gibt es ein Limit für Aufträge?",
+        "a": "Nein. Fügen Sie so viele hinzu, wie Sie möchten; sie kommen einzeln, in der Reihenfolge, die Sie festlegen."
+      },
+      {
+        "q": "Wie funktioniert das Pausieren?",
+        "a": "Abgerechnet wird in 31-Tage-Zyklen. Pausieren Sie nach 21 Tagen, bleiben die anderen 10 bis zu 6 Monate für Sie reserviert, für wann immer Sie zurückkommen."
+      },
+      {
+        "q": "Was ist nicht enthalten?",
+        "a": "Native Apps und große KI-Vorhaben, die als Festpreisprojekte laufen. Video, 3D und aufwendige Druckarbeiten machen wir nicht."
+      },
+      {
+        "q": "Was, wenn mir das Ergebnis nicht gefällt?",
+        "a": "Wir überarbeiten es, bis es passt."
+      },
+      {
+        "q": "Gibt es Erstattungen?",
+        "a": "In der ersten Woche erhalten Sie 75 % zurück, wenn es nicht passt. Danach wird gelieferte Arbeit nicht erstattet, aber Sie können jederzeit kündigen."
+      },
+      {
+        "q": "Wem gehört die Arbeit?",
+        "a": "Ihnen. Code, Designs und Konten laufen vom ersten Tag an auf Ihren Namen, und Sie brauchen das Abo nicht, um sie zu behalten."
+      },
+      {
+        "q": "Wo sitzen Sie, und arbeiten Sie mit meinem Land?",
+        "a": "Remote, aus Portugal, mit Kunden überall. Unsere Zeiten überschneiden sich mit ganz Europa und der US-Ostküste, und wir arbeiten auf Englisch, Portugiesisch, Spanisch und Deutsch."
+      },
+      {
+        "q": "Wie schicke ich Aufträge?",
+        "a": "Über Ihr eigenes Board. Schreiben Sie ein kurzes Briefing, teilen Sie ein Dokument oder ein Design, oder nehmen Sie ein kurzes Loom-Video auf, wenn Sie es lieber erklären."
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": "Leistungen",
+    "home": "Start",
+    "includes": "Was enthalten ist",
+    "forWho": "Für wen",
+    "how": "So läuft es ab",
+    "work": "Passende Arbeiten",
+    "faq": "Fragen",
+    "items": {
+      "websites": {
+        "name": "Websites",
+        "metaTitle": "Webdesign und Webentwicklung im Abo · Breadegg",
+        "metaDescription": "Websites und Landingpages für Startups und wachsende Unternehmen: Design, Entwicklung und SEO in bis zu 4 Sprachen, enthalten in einem Abo zum festen Monatspreis. Jederzeit pausieren oder kündigen.",
+        "h1": "Websites, die Ihnen Kunden bringen.",
+        "intro": "Wir gestalten und bauen Ihre Website, Ihre Landingpages oder Ihren Onlineshop, in bis zu 4 Sprachen und so gebaut, dass man Sie bei Google und in der KI-Suche findet. Alles ist Teil des Abos: keine Angebote, ein fester Preis pro Monat.",
+        "includes": [
+          "Markenidentität (Logo, Farben und Schrift) oder Ihre bestehende Marke",
+          "Design und Entwicklung, zuerst für das Smartphone",
+          "Bis zu 4 Sprachen",
+          "Onlineshop oder Buchungen, wenn Sie sie brauchen",
+          "SEO-Grundlagen für Google und KI-Suche",
+          "Hosting, Domain und Statistik auf Ihren Namen"
+        ],
+        "forWho": [
+          "Startups, die eine Website und Landingpages im Tempo des Produkts brauchen",
+          "Unternehmen, deren Website alt oder langsam ist oder keine Anmeldungen bringt",
+          "Gründungsteams vor einem Launch, einer Finanzierungsrunde oder einem neuen Markt"
+        ],
+        "faq": [
+          {
+            "q": "Wie lange dauert eine Website?",
+            "a": "Eine Landingpage dauert meist ein paar Tage. Eine komplette Website wird in Aufträge aufgeteilt und kommt in Teilen, typischerweise in 2 bis 4 Wochen."
+          },
+          {
+            "q": "Was kostet eine Website?",
+            "a": "Sie ist im Abo enthalten: ein fester Monatspreis, ohne separates Angebot. Sie können jederzeit pausieren oder kündigen."
+          },
+          {
+            "q": "Können Sie mit meiner bestehenden Marke arbeiten?",
+            "a": "Ja. Wenn Sie schon Logo und Farben haben, bauen wir darauf auf. Wenn nicht, entwerfen wir zuerst die Marke."
+          },
+          {
+            "q": "Wird meine Website bei Google erscheinen?",
+            "a": "Jede Website enthält die SEO-Grundlagen: Geschwindigkeit, Struktur, Metadaten und strukturierte Daten, damit Google und KI-Assistenten sie verstehen. Mehr dazu unter SEO und KI-Suche."
+          }
+        ]
+      },
+      "brand": {
+        "name": "Markenidentität",
+        "metaTitle": "Markendesign und Logo für Unternehmen · Breadegg",
+        "metaDescription": "Markenidentität für Startups und Produkte: Name, Logo, Farben, Schrift und ein Leitfaden dazu, bereit für Website, App und Social Media. Im Abo enthalten.",
+        "h1": "Eine Marke, die man sich merkt.",
+        "intro": "Wir entwerfen die Identität Ihres Unternehmens oder Produkts: Logo, Farben, Schrift und die Regeln für ihren Einsatz. Gemacht, um vom ersten Tag an auf Ihrer Website, in Ihrer App und überall sonst zu funktionieren.",
+        "includes": [
+          "Ein Name, wenn Sie einen brauchen",
+          "Logo und seine Varianten",
+          "Farben und Schrift",
+          "Ein kurzer Leitfaden für den Einsatz",
+          "Dateien für Web, App, Druck und Social Media",
+          "Auf Ihre Website oder App angewendet, wenn wir sie bauen"
+        ],
+        "forWho": [
+          "Neue Unternehmen und Produkte, die einen Namen und ein Gesicht brauchen",
+          "Unternehmen, deren Auftritt nicht mehr zu dem passt, was sie sind",
+          "Gründerteams vor einem Launch, einer Finanzierungsrunde oder einem Förderantrag"
+        ],
+        "faq": [
+          {
+            "q": "Was gehört zu einer Markenidentität?",
+            "a": "Logo und seine Varianten, Farben, Schrift, ein kurzer Leitfaden und alle Dateien, die Sie für Web, App, Druck und Social Media brauchen."
+          },
+          {
+            "q": "Wie lange dauert es?",
+            "a": "Das hängt vom Umfang ab. Im Abo kommt sie Auftrag für Auftrag; eine komplette Identität steht meist in 2 bis 4 Wochen."
+          },
+          {
+            "q": "Können Sie auch die Website oder die App bauen?",
+            "a": "Ja. Das ist die Idee von Breadegg: Marke, Website und App als eine Sache, vom selben Team."
+          },
+          {
+            "q": "Wem gehört die Marke?",
+            "a": "Ihnen. Sie erhalten alle Originaldateien, auf Ihren Namen."
+          }
+        ]
+      },
+      "apps": {
+        "name": "Apps",
+        "metaTitle": "App-Entwicklung für iPhone und Android mit KI · Breadegg",
+        "metaDescription": "Native Apps für iPhone und Android mit Backend und KI, von der Idee in den App Store und zu Google Play: Produktdesign, Entwicklung und Launch zum schriftlich vereinbarten Festpreis.",
+        "h1": "Ihre App, von der Idee in den App Store und zu Google Play.",
+        "intro": "Wir entwerfen und bauen native Apps mit Backend und KI und veröffentlichen sie im Store. Ein Team für Produkt, Design, Code und Launch.",
+        "includes": [
+          "Produktdesign: was die App tut und für wen",
+          "Native App für iPhone und Android, und Apple Watch, wenn es sinnvoll ist",
+          "Backend, Konten und Zahlungen",
+          "KI-Funktionen in der App",
+          "Veröffentlichung im App Store und bei Google Play",
+          "Eine Website für die App"
+        ],
+        "forWho": [
+          "Gründerteams mit einer App-Idee und ohne technisches Team",
+          "Unternehmen, die eine App für ihre Kunden wollen",
+          "Produkte, die KI eingebaut brauchen, nicht nachträglich angehängt"
+        ],
+        "faq": [
+          {
+            "q": "Wie lange dauert die Entwicklung einer App?",
+            "a": "Eine erste Version dauert 8 bis 10 Wochen, vom Design bis in den App Store und zu Google Play. Die Termine stehen schriftlich in der Diagnose."
+          },
+          {
+            "q": "Was kostet eine App?",
+            "a": "Eine erste Version beginnt bei 8.900 €. Nach einem 15-Minuten-Gespräch und der Diagnose erhalten Sie den genauen Preis schriftlich, zahlbar in drei Meilensteinen."
+          },
+          {
+            "q": "Wem gehören die App und der Code?",
+            "a": "Ihnen. Code und Konten, auch das App-Store-Konto, laufen vom ersten Tag an auf Ihren Namen."
+          },
+          {
+            "q": "Kann die App KI nutzen?",
+            "a": "Ja. Rackers, unsere eigene App, nutzt KI auf iPhone und Apple Watch. Wir bauen KI dort ins Produkt ein, wo sie Zeit spart oder echten Mehrwert bringt."
+          }
+        ]
+      },
+      "ai-automation": {
+        "name": "KI und Automatisierung",
+        "metaTitle": "KI und Automatisierung für Startups und Teams · Breadegg",
+        "metaDescription": "KI-Assistenten und Automatisierungen für Unternehmen: Kundenantworten in 4 Sprachen, Buchungen, Leads und Berichte, verbunden mit Ihren Tools. Einfache Automatisierungen sind im Abo enthalten.",
+        "h1": "KI, die Ihrem Unternehmen wirklich Zeit spart.",
+        "intro": "Wir finden den Prozess, bei dem KI Ihnen am meisten Zeit spart, und automatisieren ihn: verbunden mit den Werkzeugen, die Sie schon nutzen, und in den ersten 14 Tagen mit einem Menschen, der jede Antwort freigibt.",
+        "includes": [
+          "Eine Diagnose Ihrer Arbeitsweise, um den richtigen Prozess zu wählen",
+          "Ein Assistent, der Ihren Kunden in 4 Sprachen antwortet, auf der Website, per E-Mail oder per Nachricht",
+          "Buchungen, Termine und Erinnerungen",
+          "Nachfassen von Anfragen und Berichte, automatisch",
+          "Verbunden mit den Werkzeugen, die Sie schon nutzen",
+          "14 Tage Entwurfsmodus: ein Mensch gibt jede Antwort frei"
+        ],
+        "forWho": [
+          "Unternehmen, die jeden Tag dieselben Fragen beantworten",
+          "Teams, die Daten von Hand zwischen Werkzeugen kopieren",
+          "Alle, die KI nutzen wollen und nicht wissen, wo anfangen"
+        ],
+        "faq": [
+          {
+            "q": "Wo fange ich mit KI in meinem Unternehmen an?",
+            "a": "Mit der Diagnose: Wir schauen, wie Sie arbeiten, und wählen den Prozess, bei dem KI am meisten Zeit spart. Reicht ein einfaches Werkzeug, sagen wir es Ihnen."
+          },
+          {
+            "q": "Funktioniert die KI mit meinen bestehenden Werkzeugen?",
+            "a": "Ja. Wir verbinden sie mit dem, was Sie schon haben, und wer Ihre Website betreut, kann das weiter tun."
+          },
+          {
+            "q": "Was, wenn die KI etwas Falsches sagt?",
+            "a": "In den ersten 14 Tagen gibt ein Mensch jede Antwort frei. Sie antwortet nur mit Ihren eigenen Inhalten und übergibt an einen Menschen, wenn sie etwas nicht weiß."
+          },
+          {
+            "q": "Wie lange dauert es?",
+            "a": "Etwa 6 Wochen von der Diagnose bis zum laufenden Betrieb."
+          }
+        ]
+      },
+      "seo-geo": {
+        "name": "SEO und KI-Suche",
+        "metaTitle": "SEO und Optimierung für KI-Suche (GEO) · Breadegg",
+        "metaDescription": "Bei Google und in den Antworten von ChatGPT, Claude, Perplexity und Gemini gefunden werden: technisches SEO, Inhalte und strukturierte Daten. Im Abo enthalten.",
+        "h1": "Gefunden werden, bei Google und in KI-Antworten.",
+        "intro": "Immer mehr Menschen fragen ChatGPT, Gemini oder Perplexity, statt zu suchen. Wir sorgen dafür, dass Ihr Unternehmen an beiden Orten erscheint: in den Ergebnissen von Google und in den Antworten der KI-Assistenten.",
+        "includes": [
+          "Eine Analyse, wie Google und KI-Assistenten Ihr Unternehmen heute sehen",
+          "Technisches SEO: Geschwindigkeit, Struktur, Metadaten und Sitemap",
+          "Strukturierte Daten, damit Maschinen verstehen, wer Sie sind, was Sie verkaufen und wo",
+          "Seiten und Antworten für die Fragen, die Ihre Kunden wirklich stellen",
+          "llms.txt und Zugang für KI-Crawler",
+          "Google-Unternehmensprofil und Search Console eingerichtet"
+        ],
+        "forWho": [
+          "Unternehmen, die nicht erscheinen, wenn jemand sucht, was sie verkaufen",
+          "Websites mit Besuchern, aber ohne Anfragen",
+          "Unternehmen, die von KI-Assistenten empfohlen werden wollen"
+        ],
+        "faq": [
+          {
+            "q": "Was ist GEO?",
+            "a": "Generative Engine Optimization: dafür sorgen, dass Ihr Unternehmen in den Antworten von KI-Assistenten wie ChatGPT, Claude, Perplexity und Gemini erscheint, so wie SEO es bei Google tut."
+          },
+          {
+            "q": "Sind SEO und GEO etwas anderes?",
+            "a": "Sie teilen die Grundlage: eine schnelle, gut strukturierte Website mit klaren Inhalten. GEO ergänzt, was KI-Assistenten lesen: strukturierte Daten, direkte Antworten auf echte Fragen und eine llms.txt-Datei."
+          },
+          {
+            "q": "Wann sieht man Ergebnisse?",
+            "a": "Die technische Arbeit dauert Wochen. Rankings und Erwähnungen in KI-Antworten dauern länger, meist Monate, und hängen von Ihrem Markt ab. Wir sagen Ihnen vorher, was Sie erwarten können."
+          },
+          {
+            "q": "Garantieren Sie Platz eins bei Google?",
+            "a": "Nein. Das kann niemand seriös. Wir garantieren die Arbeit schriftlich und zeigen Ihnen, was sich verändert hat."
+          }
+        ]
+      }
+    }
   },
   "contact": {
     "eyebrow": "Hier anfangen",
     "title": "Bringen Sie uns ein Problem.",
-    "body": "Keine Spezifikation, keine Funktionsliste. Die Sache, die Sie Zeit oder Geld kostet. Wenn wir die Falschen dafür sind, sagen wir es und verweisen Sie weiter.",
+    "body": "Keine Spezifikation, keine Funktionsliste. Die Sache, die Sie Zeit oder Geld kostet. Buchen Sie ein 15-Minuten-Gespräch oder schreiben Sie uns unten. Wenn wir die Falschen dafür sind, sagen wir es und verweisen Sie weiter.",
     "form": {
       "name": "Name",
       "email": "E-Mail",
@@ -79,10 +500,48 @@
       "required": "Pflichtfeld"
     },
     "or": "oder",
-    "book": "30-Minuten-Gespräch buchen"
+    "tabs": {
+      "book": "Gespräch buchen",
+      "write": "Lieber schreiben"
+    }
   },
   "footer": {
-    "location": "Funchal, Madeira",
-    "copyright": "© {year} Breadegg®"
+    "location": "Madeira, Portugal",
+    "copyright": "© {year} Breadegg",
+    "services": "Leistungen"
+  },
+  "consent": {
+    "label": "Einwilligung zur Analyse",
+    "text": "Wir würden gern Google Analytics nutzen, um zu sehen, welche Seiten gelesen werden. Nur, wenn Sie zustimmen; sonst wird nichts erfasst.",
+    "accept": "Akzeptieren",
+    "decline": "Nein, danke",
+    "settings": "Cookie-Einstellungen"
+  },
+  "booking": {
+    "intro": "15 Minuten mit Gil, dienstags bis donnerstags am Nachmittag. Wählen Sie einen Tag und eine Uhrzeit.",
+    "timeZone": "Uhrzeiten in Ihrer Zeitzone ({timeZone})",
+    "loading": "Freie Termine werden geladen…",
+    "none": "In den nächsten zwei Wochen sind keine Termine frei.",
+    "unavailable": "Buchen ist gerade nicht möglich.",
+    "write": "Schreiben Sie uns stattdessen",
+    "pickDay": "Tag",
+    "pickTime": "Uhrzeit",
+    "change": "Ändern",
+    "message": "Worüber möchten Sie sprechen?",
+    "submit": "Gespräch buchen",
+    "sending": "Wird gebucht…",
+    "success": "Gebucht für {when}. Die Details sind unterwegs an {email}, und Gil schickt Ihnen den Google-Meet-Link vor dem Gespräch.",
+    "taken": "Dieser Termin wurde gerade vergeben. Bitte wählen Sie einen anderen.",
+    "error": "Das hat nicht geklappt. Schreiben Sie uns, und wir finden einen Termin.",
+    "email": {
+      "subject": "Ihr Gespräch mit Breadegg: {when}",
+      "greeting": "Hallo {name},",
+      "booked": "Ihr 15-minütiges Gespräch mit Breadegg ist gebucht für {when} ({timeZone}).",
+      "meet": "Gil schickt Ihnen den Google-Meet-Link vor dem Gespräch. Mit der angehängten Datei tragen Sie es in Ihren Kalender ein.",
+      "change": "Brauchen Sie einen anderen Termin? Antworten Sie einfach auf diese E-Mail.",
+      "yours": "Was Sie uns geschrieben haben:",
+      "sign": "Breadegg",
+      "summary": "Gespräch mit Breadegg"
+    }
   }
 }

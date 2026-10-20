@@ -8,7 +8,7 @@ la herramienta que convierte a un desconocido en una conversación.
 
 Decisiones ya tomadas:
 
-- **Sin sección de precios / planes.** Explícitamente fuera de alcance.
+- **Planes sin precio** (10-10-2026, como e-clarity.co.uk): cada plan dice qué incluye y cuánto tarda, con un botón "Get started". El precio se da por escrito tras la primera llamada gratis y el Diagnóstico. Antes hubo una versión con precios publicados (ver `founder/panel-v3/`).
 - **La esencia manda.** El manifiesto y el tono pesan más que la lista de features.
 - **El huevo es el protagonista**, no un adorno del hero.
 - **Tipografía tipo iOS.** Sistema tipográfico al estilo de San Francisco (ver §3.1).
@@ -33,6 +33,13 @@ Estado actual: `/Users/gilveloza/Breadegg-web` está vacío. Se construye desde 
 
 Pendiente de contenido tuyo: los casos reales (`content/cases.ts`) y las variables de
 entorno (`.env.local`).
+
+Pendiente de ti para activar lo que ya está hecho:
+
+- **Google Analytics:** crear la propiedad GA4 de breadegg.com y poner su ID en `NEXT_PUBLIC_GA_ID` (ver §7c).
+- **Google Search Console:** dar de alta breadegg.com (verificación por DNS) para ver las búsquedas que traen visitas.
+- **Stripe:** el enlace de pago de la suscripción en `NEXT_PUBLIC_SUBSCRIBE_URL`.
+- **Reservas propias** (en lugar de Cal.com): por hacer, a la espera de tu disponibilidad y de las claves de Google Calendar.
 
 ---
 
@@ -172,8 +179,16 @@ El canvas WebGL se monta después y hace *crossfade* encima. El usuario nunca ve
 | 04 | **Capacidades** | Marquee/rejilla densa: ML, forecasting, RAG, agentes, visión, dashboards, APIs, SaaS, mobile, design systems, naming, identidad, UX. Demuestra alcance sin convertirse en un menú de 30 servicios. |
 | 05 | **Cómo trabajamos** | Línea que se dibuja con el scroll: Listen → Map → Prototype → Build → Evolve. Con la promesa honesta: primer valor en semanas, no trimestres. |
 | 06 | **Dónde** | Sectores con ejemplo concreto, no abstracciones: hotelería (predecir ocupación y ajustar precio), inmobiliaria, restauración, construcción, PYME. |
-| 07 | **Madeira** | El momento tranquilo. Contorno topográfico animado de la isla. "Built on an island in the Atlantic. Working wherever the problem is." Isla → continente → Europa. |
+| 07 | ~~**Madeira**~~ | **Quitada el 10-10-2026.** El panel de compradores leía "un estudio en una isla" como un riesgo de entrega, no como un valor. La ciudad sigue en el pie y en los datos estructurados. Era: | El momento tranquilo. Contorno topográfico animado de la isla. "Built on an island in the Atlantic. Working wherever the problem is." Isla → continente → Europa. |
 | 08 | **Casos** | Trabajos reales con **el resultado como titular**, no el entregable. "Redujimos un 60% el tiempo de proceso de leads", no "hicimos una web". Numerales tabulares, cifra grande, contexto corto. Cada caso es una entrada tipada en `content/cases/`. |
+| 08b | **Para quién** (`Fit`) | Tres situaciones, no sectores: quiere IA y no sabe por dónde empezar; ya tiene a alguien para su web (hacemos la parte de IA que falta); una agencia ya le falló. |
+| 08a | **Franja de logos** (`LogoStrip`) | Bajo el hero: los logos de los clientes en blanco cálido, en una línea. |
+| 08a2 | **Testimonios** (`Testimonials`) | Solo palabras reales de los clientes (`content/testimonials.ts`). Sin cita, en dev se ve el hueco y en producción no sale. |
+| 08c | **Planes** (`Plans`) | Primera llamada gratis → Diagnóstico (se descuenta) → proyecto a precio cerrado. Seis planes sin precio, cada uno con lo que incluye, "Get started" y enlace a su página de servicio. |
+| 08d | **Por escrito** (`Promises`) | Lo que va al contrato: precio cerrado, alcance por escrito, 10 % por semana de retraso (hasta 4), IA en modo borrador 14 días, Cuidado (1 día laborable, urgencias en 6 h), código y cuentas del cliente. |
+| 08e | **Con quién trabajas** (`Founder`) | Gil Veloza, con foto (`public/founder/gil-veloza.jpg`) y enlace a LinkedIn (`lib/site.ts`). |
+| 08f | **Preguntas** (`Faq`) | Siete preguntas con respuesta en el HTML y el mismo contenido como `FAQPage`. |
+| — | **Botones de contacto** | "Get started" en el hero, en cada plan y tras los testimonios; "Reservar llamada gratis" tras los casos; y un botón flotante "Let's talk" (el huevo) que aparece al dejar el hero y se esconde en el formulario. |
 | 09 | **Contacto** | El huevo vuelve, pequeño e incandescente. "Bring us a problem." Formulario + reserva en Cal.com + email visible + Funchal. |
 | 10 | **Footer** | Marca, enlaces, año. |
 
@@ -231,6 +246,28 @@ partida, qué construimos, **la métrica del resultado**, y si el cliente se pue
 "una cadena hotelera en Funchal". Con dos o tres basta; más no mejora.
 
 ---
+
+## 7b. SEO y búsqueda con IA
+
+SEO y GEO (aparecer en las respuestas de ChatGPT, Claude, Perplexity o Gemini) son servicios del estudio, así que la web los practica:
+
+- `/llms.txt` (`app/llms.txt/route.ts`): la web en Markdown para modelos de lenguaje, generada en el build desde `messages/en.json` y `content/cases.ts`. Nunca se desincroniza de la página.
+- Datos estructurados (`app/[locale]/layout.tsx`): `ProfessionalService` con eslogan, fundador (con LinkedIn), capacidades y un `OfferCatalog` con los precios sin IVA, por idioma.
+- `robots.ts` nombra a los rastreadores de IA para que nadie los bloquee sin querer.
+- Títulos por idioma con lo que hacemos, no solo la marca; un solo `h1`; `h3`/`h4` en tarjetas y paquetes.
+- **Una página por servicio** (`app/[locale]/services/[slug]`, datos en `content/services.ts`, textos en `messages/*.json > services.items`): webs, marca, apps, IA y automatización, SEO y búsqueda con IA. Cada una con su título y descripción pensados para la búsqueda, `h1` claro, qué incluye, para quién, cómo funciona, trabajos relacionados, preguntas (`FAQPage`), `Service` + `BreadcrumbList`, canonical y `hreflang` con `x-default`. Todas en el sitemap y en `llms.txt`, enlazadas desde los planes y el pie.
+- Los trabajos enseñan capturas reales de lo que se construyó (`public/cases/shots/`); los trabajos de solo marca enseñan el logo.
+
+## 7c. Analítica
+
+Google Analytics 4, solo con consentimiento (`components/Analytics.tsx`):
+
+- **Sin un sí no se carga nada.** gtag ni siquiera se descarga hasta que el visitante acepta en el aviso; nada de "consent mode" enviando datos en segundo plano. Es lo que exige la normativa europea para cookies de analítica.
+- La elección se guarda en el navegador y se cambia desde **"Ajustes de cookies"** en el pie; al retirarla se borran las cookies `_ga`. Un navegador con Global Privacy Control cuenta como un no.
+- Sin `NEXT_PUBLIC_GA_ID` no hay ni script ni aviso.
+- Las páginas vistas las cuenta GA4 solo (la medición mejorada sigue los cambios de URL).
+- **Eventos del negocio:** `start_subscription` (botón "Empezar hoy"), `book_call` (reservar llamada) y `generate_lead` (formulario enviado). Cualquier botón con `track="…"` en `CtaButton` envía su evento. En GA4, marcar `generate_lead` y `start_subscription` como eventos clave.
+- **Falta:** una página de privacidad que explique qué se mide y con quién se comparte.
 
 ## 8. Verificación
 
