@@ -1,11 +1,13 @@
-import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import Carousel from "@/components/ui/Carousel";
+import CaseCard from "@/components/ui/CaseCard";
+import CtaButton from "@/components/ui/CtaButton";
 import SectionHeader from "@/components/ui/SectionHeader";
-import { pick, publishedCases } from "@/content/cases";
+import { publishedCases } from "@/content/cases";
 
 export default function Cases() {
   const t = useTranslations("cases");
+  const cta = useTranslations("cta");
   const locale = useLocale();
   const items = publishedCases();
 
@@ -33,64 +35,16 @@ export default function Cases() {
         {items.map((item) => (
           <li
             key={item.id}
-            className="flex w-[85%] shrink-0 snap-start flex-col rounded-2xl border border-crust-lift bg-crust p-8 md:w-[calc(50%-0.5rem)] md:p-10"
+            className="flex w-[85%] shrink-0 snap-start flex-col rounded-2xl border border-crust-lift bg-crust p-6 md:w-[calc(50%-0.5rem)] md:p-8"
           >
-            {item.draft ? (
-              <span className="t-eyebrow mb-5 inline-block w-fit rounded border border-yolk/40 px-2 py-1 text-yolk">
-                draft · dev only
-              </span>
-            ) : null}
-
-            {item.logo ? (
-              /* Each mark sits on the ground it was drawn for: navy on
-                 cream, cream on grey. One shared plate colour would leave
-                 half of them illegible. Fixed height, free width, so a row
-                 of logos lines up whatever their proportions. */
-              <div
-                className="mb-8 inline-flex h-16 w-fit items-center rounded-xl px-6"
-                style={{ backgroundColor: item.logo.plate }}
-              >
-                <Image
-                  src={item.logo.src}
-                  alt={item.logo.alt}
-                  width={item.logo.width}
-                  height={item.logo.height}
-                  className={`${item.logo.compact ? "h-12" : "h-8"} w-auto`}
-                />
-              </div>
-            ) : null}
-
-            <p className="t-h2 text-crumb">{item.name}</p>
-
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {item.what.map((what) => (
-                <li
-                  key={what.en}
-                  className="t-eyebrow rounded-full border border-crust-lift px-3 py-1.5 text-ash"
-                >
-                  {pick(what, locale)}
-                </li>
-              ))}
-            </ul>
-
-            <p className="t-body mt-5 text-ash">{pick(item.body, locale)}</p>
-
-            {item.href ? (
-              /* mt-auto so the links line up along the bottom of a row of
-                 cards, however much text each one carries above them. */
-              <a
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="t-eyebrow mt-auto inline-flex w-fit items-center gap-2 pt-8 text-ash transition-colors duration-200 hover:text-crumb"
-              >
-                {item.href.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}
-                <span aria-hidden="true">↗</span>
-              </a>
-            ) : null}
+            <CaseCard item={item} locale={locale} />
           </li>
         ))}
       </Carousel>
+
+      <div className="mx-auto mt-10 max-w-6xl px-6">
+        <CtaButton href="#contact">{cta("freeCall")}</CtaButton>
+      </div>
     </section>
   );
 }

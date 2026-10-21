@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { motion, useScroll, useTransform } from "motion/react";
 import EggStage from "@/components/egg/EggStage";
+import CtaButton from "@/components/ui/CtaButton";
 
 /**
  * One screen — and that is a constraint, not a description.
@@ -17,8 +18,8 @@ import EggStage from "@/components/egg/EggStage";
  * same reason — see .t-display-hero.
  *
  * The egg floats slowly on its own, and as the hero scrolls away it drifts
- * upward a little faster than the page while a halo blooms around it. The
- * circle itself never deforms.
+ * upward a little faster than the page while a halo blooms around it. Scroll
+ * it hard and the yolk gives a little, then wobbles back to round (CssEgg).
  */
 export default function Hero() {
   const hero = useRef<HTMLElement>(null);
@@ -38,7 +39,10 @@ export default function Hero() {
     <section
       id="top"
       ref={hero}
-      className="relative flex min-h-svh flex-col items-center justify-center px-6 pt-[clamp(5rem,10vh,7rem)] pb-[clamp(2.5rem,6vh,5rem)]"
+      // overflow-x-clip: the halo blooms wider than a phone screen, and on
+      // mobile that widened the whole layout viewport, pushing the nav's
+      // contact link and the floating button off the right edge.
+      className="relative flex min-h-svh flex-col items-center justify-center overflow-x-clip px-6 pt-[clamp(5rem,10vh,7rem)] pb-[clamp(2.5rem,6vh,5rem)]"
     >
       <motion.div
         style={{ y: eggY }}
@@ -56,6 +60,13 @@ export default function Hero() {
 
       <div className="flex max-w-6xl flex-col items-center text-center">
         <h1 className="t-display t-display-hero text-crumb">{t("title")}</h1>
+        {/* The slogan is the brand; this line is what we actually do. */}
+        <p className="t-lead mt-[clamp(0.75rem,2vh,1.5rem)] max-w-2xl text-ash">
+          {t("subtitle")}
+        </p>
+        <CtaButton href="#plans" className="mt-[clamp(1rem,2.5vh,1.75rem)]">
+          {t("cta")}
+        </CtaButton>
       </div>
 
       <motion.div

@@ -1,0 +1,53 @@
+// The site on Cloudflare Workers, through OpenNext (https://opennext.js.org/cloudflare).
+// Build and deploy with `npm run deploy`; preview the production build locally
+// with `npm run preview`.
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "breadegg",
+	// The Breadegg Cloudflare account, so a deploy can never land in another one.
+	"account_id": "9c35d77417f595016e034924f0113e86",
+	"main": ".open-next/worker.js",
+	"compatibility_date": "2026-10-20",
+	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+	// The site lives at breadegg.com, so no second public copy on workers.dev.
+	"workers_dev": false,
+	"preview_urls": false,
+	// The site's own addresses. www answers too, and proxy.ts redirects it to the
+	// bare domain.
+	"routes": [
+		{ "pattern": "breadegg.com", "custom_domain": true },
+		{ "pattern": "www.breadegg.com", "custom_domain": true }
+	],
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"services": [
+		{
+			// OpenNext calls back into its own worker; the name must match "name" above.
+			"binding": "WORKER_SELF_REFERENCE",
+			"service": "breadegg"
+		}
+	],
+	// next/image optimisation through Cloudflare Images.
+	"images": {
+		"binding": "IMAGES"
+	},
+	"d1_databases": [
+		{
+			// The call bookings (lib/booking-store.ts), in western Europe. The
+			// table comes from migrations/: `npm run db:migrate`.
+			"binding": "BOOKINGS",
+			"database_name": "breadegg-bookings",
+			"database_id": "0e0c2129-7e2e-4d60-9c51-b5c506381875",
+			"migrations_dir": "migrations"
+		}
+	],
+	// Not secret. RESEND_API_KEY is: set it with `npx wrangler secret put RESEND_API_KEY`.
+	"vars": {
+		"CONTACT_TO_EMAIL": "hello@breadegg.com"
+	},
+	"observability": {
+		"enabled": true
+	}
+}

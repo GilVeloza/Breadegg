@@ -1,21 +1,25 @@
 {
   "meta": {
-    "title": "Breadegg®",
-    "description": "We turn ideas into intelligent products. AI, software and design, built as one thing. From Madeira, Portugal."
+    "title": "Breadegg · Design, web, apps and AI on subscription",
+    "description": "Your product team on subscription: design, websites, apps and AI automation for startups and founders. One flat monthly price, pause or cancel anytime. Remote from Portugal, in 4 languages."
   },
   "nav": {
+    "work": "Work",
+    "plans": "Pricing",
     "contact": "Contact",
     "language": "Language",
     "skip": "Skip to content"
   },
   "hero": {
     "title": "We build things impossible to ignore.",
-    "location": "Madeira, Portugal",
-    "scroll": "Scroll"
+    "subtitle": "Your product team on subscription: design, web, apps and AI. Pause or cancel anytime.",
+    "location": "Remote from Portugal · 4 languages",
+    "scroll": "Scroll",
+    "cta": "See pricing"
   },
   "manifesto": {
-    "line1": "You don't need another agency.",
-    "line2": "You need us.",
+    "line1": "Four suppliers.",
+    "line2": "Or one that does it all.",
     "body": "Most companies buy their future in pieces. A brand from one place. A website from another. Software from a third. And an AI tool nobody opens. Four invoices, four roadmaps, and nothing that fits together.",
     "close": "We build the whole thing. Because the whole thing is the point."
   },
@@ -40,8 +44,19 @@
       "Brand identity",
       "Design systems",
       "UI/UX",
-      "Websites"
+      "Websites",
+      "SEO",
+      "AI search (GEO)"
     ]
+  },
+  "strip": {
+    "label": "Brands we've worked on"
+  },
+  "cta": {
+    "getStarted": "Get started",
+    "learnMore": "Learn more",
+    "talk": "Let's talk",
+    "freeCall": "Book a 15-minute call"
   },
   "cases": {
     "eyebrow": "Selected work",
@@ -52,20 +67,426 @@
     "pause": "Pause",
     "play": "Play"
   },
-  "madeira": {
-    "eyebrow": "Where we are",
-    "title": "Built on an island in the Atlantic.",
-    "body": "Madeira is a small market that behaves like a laboratory. Hotels, rentals, restaurants and agencies, dense enough that an idea can be tested in weeks instead of quarters. What holds up here, we take to the mainland.",
-    "chain": [
-      { "place": "Madeira", "role": "the laboratory" },
-      { "place": "World", "role": "the market" }
+  "testimonials": {
+    "eyebrow": "In their words",
+    "title": "What our clients say.",
+    "pending": "Waiting for {name}'s words"
+  },
+  "fit": {
+    "eyebrow": "Where we fit",
+    "title": "For teams that would rather ship than hire.",
+    "items": [
+      {
+        "title": "Your startup has no product team.",
+        "body": "Hiring a designer, a developer and someone for AI takes months and three salaries. The subscription covers all three, for one flat price, starting this week."
+      },
+      {
+        "title": "Your team has more work than hands.",
+        "body": "A product team, a marketing team or an agency with a backlog. Send the overflow to your queue: landing pages, app screens, integrations, under your brand if you need it."
+      },
+      {
+        "title": "An agency has already let you down.",
+        "body": "No quotes that keep growing, no account managers. One price a month, the person who builds it is the one who answers, and you can pause or cancel anytime."
+      }
+    ]
+  },
+  "plans": {
+    "eyebrow": "Pricing",
+    "title": "One subscription. Everything digital.",
+    "note": "Request as much as you like and get it one piece at a time. Bigger builds, like a native app, get a fixed price instead.",
+    "steps": [
+      {
+        "name": "Subscribe",
+        "label": "Today",
+        "body": "Pick the plan and you'll have your own board within a day. No sales call needed, unless you want one."
+      },
+      {
+        "name": "Request",
+        "label": "As much as you like",
+        "body": "Add whatever you need: pages, designs, app screens, automations. A written brief, a doc or a short Loom video is enough."
+      },
+      {
+        "name": "Receive",
+        "label": "About 3 business days each",
+        "body": "Requests are delivered one at a time, in the order you choose. Big ones are split up and arrive in parts."
+      }
     ],
-    "close": "Distance stopped mattering a while ago. The work happens where the problem is."
+    "subscription": {
+      "name": "Monthly subscription",
+      "period": "/month",
+      "founding": "Founding price for the first {seats} clients, kept for as long as you stay.",
+      "vat": "Plus VAT where it applies.",
+      "includes": [
+        "One request at a time, as many as you like",
+        "About 3 business days per request",
+        "Design, web, app screens, SEO and AI automations",
+        "Unlimited brands",
+        "Your own board, for up to 2 people",
+        "Code and accounts in your name",
+        "Pause or cancel anytime"
+      ],
+      "seats": "{open} of {total} seats open",
+      "full": "All seats taken",
+      "start": "Start today",
+      "waitlist": "Join the waitlist",
+      "call": "Book a 15-minute call"
+    },
+    "perks": [
+      {
+        "title": "Pause anytime",
+        "body": "Not enough work this month? Pause it, and the days you haven't used wait for you for up to 6 months."
+      },
+      {
+        "title": "Try it for a week",
+        "body": "If the first week doesn't convince you, 75% of what you paid comes back. No questions."
+      },
+      {
+        "title": "Only 4 at a time",
+        "body": "One person does the work, so the roster stays small. When it's full, there's a waitlist."
+      }
+    ],
+    "projects": {
+      "title": "Too big for a queue.",
+      "note": "When a job needs a written scope and a deadline, it gets a fixed price, paid in three milestones. After launch, the subscription keeps it moving.",
+      "items": [
+        {
+          "name": "Native app",
+          "time": "8 to 10 weeks",
+          "price": "From €8,900",
+          "body": "From the idea to the stores: product design, a native app for iPhone and Android, its backend and AI.",
+          "includes": [
+            "Product design",
+            "App for iPhone and Android with backend",
+            "AI built in",
+            "Published on the App Store and Google Play"
+          ],
+          "service": "apps"
+        },
+        {
+          "name": "Custom AI",
+          "time": "6 weeks",
+          "price": "From €4,900",
+          "body": "A process that eats your team's time, automated and connected to your tools.",
+          "includes": [
+            "Starts with a one-week Diagnosis (€490, deducted)",
+            "Assistants, bookings, leads or reports",
+            "Connected to the tools you already use",
+            "14 days in draft mode"
+          ],
+          "service": "ai-automation"
+        }
+      ]
+    },
+    "projectSteps": [
+      {
+        "name": "First call",
+        "label": "Free · 15 minutes",
+        "body": "Tell us the problem. If we're not the right people for it, we'll say so and point you somewhere better."
+      },
+      {
+        "name": "Diagnosis",
+        "label": "1 week · €490, deducted from the project",
+        "body": "We look at what you have and write you a plan with a fixed price and dates. If you go ahead, it comes off the project."
+      },
+      {
+        "name": "The project",
+        "label": "Fixed price · 6 to 10 weeks",
+        "body": "Exactly the scope agreed in the Diagnosis, in writing. Paid in three milestones: 40%, 40% and 20%."
+      }
+    ],
+    "terms": "On fixed-price projects, if we miss the agreed delivery date, you pay 10% less for each week of delay, up to 4 weeks."
+  },
+  "promises": {
+    "eyebrow": "In writing",
+    "title": "What we promise, in the contract.",
+    "items": [
+      {
+        "title": "One price, every month",
+        "body": "The same amount every month. No quotes, no hourly billing, no surprises."
+      },
+      {
+        "title": "Pause or cancel anytime",
+        "body": "No lock-in. Cancel and it ends with the period you've paid for; pause and your unused days wait up to 6 months."
+      },
+      {
+        "title": "A week to decide",
+        "body": "If the first week doesn't convince you, 75% of the first month comes back."
+      },
+      {
+        "title": "Deadlines with a penalty",
+        "body": "On fixed-price projects, 10% less for each week of delay, up to 4 weeks."
+      },
+      {
+        "title": "AI that doesn't make things up",
+        "body": "For the first 14 days a person approves every answer. It only answers from your own content, and passes to a person when it doesn't know."
+      },
+      {
+        "title": "Yours from day one",
+        "body": "The code and the accounts are in your name from the start."
+      }
+    ]
+  },
+  "founder": {
+    "eyebrow": "Who you'll work with",
+    "role": "Founder",
+    "body": "Breadegg is run by Gil. Every request is designed and built by the same person who answers your messages: no account managers, no handoffs. That's why there are only 4 seats. Trusted freelancers help with translation and testing when a job needs it.",
+    "linkedin": "Gil on LinkedIn"
+  },
+  "faq": {
+    "eyebrow": "Questions",
+    "title": "What people ask before subscribing.",
+    "items": [
+      {
+        "q": "What do I get with the subscription?",
+        "a": "A product team for one flat monthly price: design, websites, app screens, SEO and AI automations. You add requests to your board and they're delivered one at a time."
+      },
+      {
+        "q": "What counts as a request?",
+        "a": "Anything that fits in about a day of work: a page, a landing page, a set of ads, an email, an app screen, a simple integration. Bigger jobs, like a full website, are split into requests and delivered in parts."
+      },
+      {
+        "q": "How fast will I get my requests?",
+        "a": "About 3 business days per request, on average. Bigger requests arrive in parts, one every few days, until they're done."
+      },
+      {
+        "q": "Is there a limit to how many requests I can make?",
+        "a": "No. Add as many as you like; they're delivered one at a time, in the order you choose."
+      },
+      {
+        "q": "How does pausing work?",
+        "a": "Billing runs in 31-day cycles. If you pause after 21 days, the other 10 are kept for you for up to 6 months, to use whenever you come back."
+      },
+      {
+        "q": "What isn't included?",
+        "a": "Native apps and large AI builds, which get a fixed price as projects. We also don't do video, 3D or complex print work."
+      },
+      {
+        "q": "What if I don't like what I get?",
+        "a": "We keep revising it until it's right."
+      },
+      {
+        "q": "Can I get a refund?",
+        "a": "In the first week, if it isn't for you, 75% comes back. After that, delivered work isn't refunded, but you can cancel at any time."
+      },
+      {
+        "q": "Who owns the work?",
+        "a": "You do. Code, designs and accounts are in your name from day one, and you don't need the subscription to keep them."
+      },
+      {
+        "q": "Where are you, and do you work with my country?",
+        "a": "Remotely, from Portugal, with clients anywhere. Our hours overlap with all of Europe and the US East Coast, and we work in English, Portuguese, Spanish and German."
+      },
+      {
+        "q": "How do I send requests?",
+        "a": "On your own board. Write a brief, share a doc or a design, or record a short Loom video if you'd rather talk it through."
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": "Services",
+    "home": "Home",
+    "includes": "What's included",
+    "forWho": "Who it's for",
+    "how": "How it works",
+    "work": "Related work",
+    "faq": "Questions",
+    "items": {
+      "websites": {
+        "name": "Websites",
+        "metaTitle": "Website design and development on subscription · Breadegg",
+        "metaDescription": "Websites and landing pages for startups and growing companies: design, build and SEO in up to 4 languages, included in one flat monthly subscription. Pause or cancel anytime.",
+        "h1": "Websites that bring you customers.",
+        "intro": "We design and build your website, landing pages or online shop, in up to 4 languages and built to be found on Google and in AI search. It's all part of the subscription: no quotes, one flat price a month.",
+        "includes": [
+          "Brand identity (logo, colours and type), or the brand you already have",
+          "Design and build, mobile first",
+          "Up to 4 languages",
+          "Online shop or bookings, when you need them",
+          "SEO basics for Google and AI search",
+          "Hosting, domain and analytics set up in your name"
+        ],
+        "forWho": [
+          "Startups that need a site and landing pages that keep up with the product",
+          "Companies whose website is old, slow or brings no sign-ups",
+          "Founders preparing a launch, a round or a new market"
+        ],
+        "faq": [
+          {
+            "q": "How long does a website take?",
+            "a": "A landing page usually takes a few days. A full website is split into requests and arrives in parts, typically over 2 to 4 weeks."
+          },
+          {
+            "q": "How much does a website cost?",
+            "a": "It's included in the subscription: one flat monthly price, with no separate quote. You can pause or cancel at any time."
+          },
+          {
+            "q": "Can you work with the brand I already have?",
+            "a": "Yes. If you already have a logo and colours, we build on them. If not, we design the brand first."
+          },
+          {
+            "q": "Will my website show up on Google?",
+            "a": "Every website includes the SEO basics: speed, structure, metadata and structured data, so Google and AI assistants can read it. To go further, see SEO and AI search."
+          }
+        ]
+      },
+      "brand": {
+        "name": "Brand identity",
+        "metaTitle": "Brand identity and logo design for businesses · Breadegg",
+        "metaDescription": "Brand identity for startups and products: name, logo, colours, type and a guide to use them, ready for your website, app and social media. Included in the subscription.",
+        "h1": "A brand people remember.",
+        "intro": "We design the identity of your business or product: logo, colours, type and the rules for using them. Made to work on your website, your app and everywhere else from day one.",
+        "includes": [
+          "Naming, when you need it",
+          "Logo and its versions",
+          "Colours and type",
+          "A short guide on how to use them",
+          "Files ready for web, app, print and social media",
+          "Applied to your website or app, if we build it"
+        ],
+        "forWho": [
+          "New businesses and products that need a name and a face",
+          "Businesses whose image no longer matches what they are",
+          "Founders preparing a launch, a round or a grant"
+        ],
+        "faq": [
+          {
+            "q": "What's included in a brand identity?",
+            "a": "The logo and its versions, colours, type, a short guide on how to use them and every file you need for web, app, print and social media."
+          },
+          {
+            "q": "How long does it take?",
+            "a": "It depends on the scope. In the subscription it arrives a request at a time, usually within 2 to 4 weeks for a full identity."
+          },
+          {
+            "q": "Can you also build the website or the app?",
+            "a": "Yes. That is the idea behind Breadegg: the brand, the website and the app made as one thing, by the same team."
+          },
+          {
+            "q": "Who owns the brand?",
+            "a": "You do. You get every source file, in your name."
+          }
+        ]
+      },
+      "apps": {
+        "name": "Apps",
+        "metaTitle": "iPhone and Android app development with AI · Breadegg",
+        "metaDescription": "Native apps for iPhone and Android with backend and AI, from the idea to the App Store and Google Play: product design, build and launch at a fixed price agreed in writing.",
+        "h1": "Your app, from the idea to the App Store and Google Play.",
+        "intro": "We design and build native apps with their backend and AI, and publish them in the store. One team for the product, the design, the code and the launch.",
+        "includes": [
+          "Product design: what the app does and for whom",
+          "Native app for iPhone and Android, and Apple Watch when it makes sense",
+          "Backend, accounts and payments",
+          "AI features inside the app",
+          "Publishing on the App Store and Google Play",
+          "A website for the app"
+        ],
+        "forWho": [
+          "Founders with an app idea and no technical team",
+          "Businesses that want an app for their customers",
+          "Products that need AI built in, not bolted on"
+        ],
+        "faq": [
+          {
+            "q": "How long does it take to build an app?",
+            "a": "A first version takes 8 to 10 weeks, from design to the App Store and Google Play. The dates go in writing in the Diagnosis."
+          },
+          {
+            "q": "How much does an app cost?",
+            "a": "A first version starts at €8,900. After a 15-minute call and the Diagnosis you get the exact price in writing, paid in three milestones."
+          },
+          {
+            "q": "Who owns the app and the code?",
+            "a": "You do. The code and the accounts, the App Store account included, are in your name from day one."
+          },
+          {
+            "q": "Can the app use AI?",
+            "a": "Yes. Rackers, our own app, uses AI on iPhone and Apple Watch. We build AI into the product where it saves time or adds something real."
+          }
+        ]
+      },
+      "ai-automation": {
+        "name": "AI and automation",
+        "metaTitle": "AI and automation for startups and teams · Breadegg",
+        "metaDescription": "AI assistants and automations for companies: customer replies in 4 languages, bookings, leads and reports, connected to your tools. Simple automations are part of the subscription.",
+        "h1": "AI that saves your business real time.",
+        "intro": "We find the one process where AI saves you the most time and automate it: connected to the tools you already use, with a person approving every answer for the first 14 days.",
+        "includes": [
+          "A Diagnosis of how you work, to pick the right process",
+          "An assistant that answers your customers in 4 languages, on your website, by email or by message",
+          "Bookings, appointments and reminders",
+          "Lead follow-up and reports, done automatically",
+          "Connected to the tools you already use",
+          "Draft mode for 14 days: a person approves every answer"
+        ],
+        "forWho": [
+          "Businesses that answer the same questions every day",
+          "Teams that copy data between tools by hand",
+          "Anyone who wants to use AI and doesn't know where to start"
+        ],
+        "faq": [
+          {
+            "q": "Where do I start with AI in my business?",
+            "a": "With the Diagnosis: we look at how you work and pick the one process where AI saves the most time. If a simple tool is enough, we tell you."
+          },
+          {
+            "q": "Can AI work with the tools I already use?",
+            "a": "Yes. We connect it to what you already have, and whoever looks after your website can keep doing it."
+          },
+          {
+            "q": "What if the AI says something wrong?",
+            "a": "For the first 14 days a person approves every answer. It only answers from your own content, and passes to a person when it doesn't know."
+          },
+          {
+            "q": "How long does it take?",
+            "a": "About 6 weeks from the Diagnosis to having it running."
+          }
+        ]
+      },
+      "seo-geo": {
+        "name": "SEO and AI search",
+        "metaTitle": "SEO and AI search optimisation (GEO) · Breadegg",
+        "metaDescription": "Get found on Google and in the answers of ChatGPT, Claude, Perplexity and Gemini: technical SEO, content and structured data. Included in the subscription.",
+        "h1": "Be found on Google, and in AI answers.",
+        "intro": "More and more people ask ChatGPT, Gemini or Perplexity instead of searching. We make your business show up in both places: in Google's results and in the answers AI assistants give.",
+        "includes": [
+          "A review of how Google and AI assistants see your business today",
+          "Technical SEO: speed, structure, metadata and sitemap",
+          "Structured data, so machines understand who you are, what you sell and where",
+          "Pages and answers for the questions your customers actually ask",
+          "llms.txt and access for AI crawlers",
+          "Google Business Profile and Search Console set up"
+        ],
+        "forWho": [
+          "Businesses that don't appear when people search for what they sell",
+          "Websites that get visits but no enquiries",
+          "Businesses that want AI assistants to recommend them"
+        ],
+        "faq": [
+          {
+            "q": "What is GEO?",
+            "a": "Generative Engine Optimisation: making your business appear in the answers of AI assistants such as ChatGPT, Claude, Perplexity and Gemini, the way SEO does for Google."
+          },
+          {
+            "q": "Are SEO and GEO different?",
+            "a": "They share the basics: a fast, well-structured site with clear content. GEO adds what AI assistants read: structured data, direct answers to real questions and an llms.txt file."
+          },
+          {
+            "q": "How long until I see results?",
+            "a": "The technical work takes weeks. Rankings and mentions in AI answers take longer, usually months, and depend on your market. We tell you what to expect before we start."
+          },
+          {
+            "q": "Do you guarantee first place on Google?",
+            "a": "No. Nobody honest can. We guarantee the work in writing and show you what changed."
+          }
+        ]
+      }
+    }
   },
   "contact": {
     "eyebrow": "Start here",
     "title": "Bring us a problem.",
-    "body": "Not a spec, not a feature list. The thing that is costing you time or money. If we're not the right people for it, we'll say so and point you somewhere better.",
+    "body": "Not a spec, not a feature list. The thing that is costing you time or money. Book a 15-minute call or write to us below. If we're not the right people for it, we'll say so and point you somewhere better.",
     "form": {
       "name": "Name",
       "email": "Email",
@@ -79,10 +500,86 @@
       "required": "Required"
     },
     "or": "or",
-    "book": "Book a 30-minute call"
+    "tabs": {
+      "book": "Book a call",
+      "write": "Write to us"
+    }
   },
   "footer": {
-    "location": "Funchal, Madeira",
-    "copyright": "© {year} Breadegg®"
+    "location": "Madeira, Portugal",
+    "copyright": "© {year} Breadegg",
+    "services": "Services"
+  },
+  "consent": {
+    "label": "Analytics consent",
+    "text": "We would like to use Google Analytics to see which pages people read. Only if you say yes; nothing else is tracked.",
+    "accept": "Accept",
+    "decline": "No thanks",
+    "settings": "Cookie settings"
+  },
+  "booking": {
+    "intro": "15 minutes with Gil, Tuesday to Thursday afternoons. Pick a day and a time.",
+    "timeZone": "Times in your time zone ({timeZone})",
+    "loading": "Loading free times…",
+    "none": "No free times in the next two weeks.",
+    "unavailable": "Booking isn't available right now.",
+    "write": "Write to us instead",
+    "pickDay": "Day",
+    "pickTime": "Time",
+    "change": "Change",
+    "message": "What would you like to talk about?",
+    "submit": "Book the call",
+    "sending": "Booking…",
+    "success": "Booked for {when}. The details are on their way to {email}, and Gil will send you the Google Meet link before the call.",
+    "taken": "That time was just taken. Pick another one.",
+    "error": "That didn't go through. Write to us and we'll find a time.",
+    "email": {
+      "subject": "Your call with Breadegg: {when}",
+      "greeting": "Hi {name},",
+      "booked": "Your 15-minute call with Breadegg is booked for {when} ({timeZone}).",
+      "meet": "Gil will send you the Google Meet link before the call.",
+      "yours": "What you told us:",
+      "sign": "Breadegg",
+      "summary": "Call with Breadegg",
+      "eyebrow": "Call booked",
+      "duration": "15 minutes · times in {timeZone}",
+      "calendar": "Add to Google Calendar",
+      "calendarNote": "The calendar file is attached too, for any other calendar.",
+      "addTo": "Add it to your calendar",
+      "manage": "Plans changed?",
+      "moveLink": "Change the time",
+      "cancelLink": "Cancel the call",
+      "movedEyebrow": "Call moved",
+      "movedSubject": "Your call with Breadegg has moved: {when}",
+      "cancelledEyebrow": "Call cancelled",
+      "cancelledSubject": "Your call with Breadegg is cancelled",
+      "cancelledBody": "Your call on {when} is cancelled. Whenever you'd like another time, you can book one on our website.",
+      "bookAgain": "Book another time",
+      "guide": "We have attached a short guide: what the 15 minutes are for and how to make the most of them.",
+      "guideFile": "Breadegg - Your 15-minute call.pdf"
+    }
+  },
+  "manage": {
+    "meta": "Your call with Breadegg",
+    "eyebrow": "Your call",
+    "loading": "Loading your booking…",
+    "notFound": "This link no longer works. If you have already changed your call, use the link in the latest email.",
+    "past": "The time of this call has passed, so it can no longer be changed.",
+    "timeZone": "Times in your time zone ({timeZone})",
+    "change": "Change the time",
+    "cancel": "Cancel the call",
+    "back": "Back",
+    "confirmMove": "Move my call",
+    "moving": "Moving…",
+    "moved": "Done: your call is now on {when}. The new details are on their way to your email.",
+    "confirmCancel": "Cancel this call? The time opens up for someone else.",
+    "yesCancel": "Yes, cancel it",
+    "keep": "Keep it",
+    "cancelling": "Cancelling…",
+    "cancelled": "Your call is cancelled. A confirmation is on its way to your email.",
+    "bookAgain": "Book another time",
+    "taken": "That time was just taken. Pick another one.",
+    "error": "That didn't go through. Reply to the confirmation email and we'll sort it out.",
+    "none": "There are no other free times in the next two weeks. Reply to the confirmation email and we'll find one."
   }
 }

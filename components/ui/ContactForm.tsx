@@ -1,22 +1,28 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { track } from "@/lib/analytics";
 
 type State = "idle" | "sending" | "sent" | "error";
 
-const field =
+export const fieldClass =
   "w-full rounded-lg border border-crust-lift bg-crust-lift/30 px-4 py-3 t-body text-crumb placeholder:text-ash-dim transition-colors duration-200 focus:border-yolk/60 focus:outline-none";
 
 export default function ContactForm() {
   const t = useTranslations("contact.form");
+  const locale = useLocale();
   const [state, setState] = useState<State>("idle");
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setState("sending");
 
-    const data = Object.fromEntries(new FormData(event.currentTarget));
+    // Held now: after the await below, React has already cleared
+    // event.currentTarget, and reset() on null threw straight into the catch,
+    // showing "didn't send" for a message that had gone.
+    const form = event.currentTarget;
+    const data = Object.fromEntries(new FormData(form));
 
     try {
       const res = await fetch("/api/contact", {
@@ -25,7 +31,10 @@ export default function ContactForm() {
         body: JSON.stringify(data),
       });
       setState(res.ok ? "sent" : "error");
-      if (res.ok) event.currentTarget.reset();
+      if (res.ok) {
+        form.reset();
+        track("generate_lead", { method: "contact_form" });
+      }
     } catch {
       setState("error");
     }
@@ -41,6 +50,9 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-4">
+      {/* So the studio knows which language to answer in. */}
+      <input type="hidden" name="locale" value={locale} />
+
       {/* Bots fill this; people never see it. */}
       <div aria-hidden="true" className="absolute -left-[9999px]">
         <label>
@@ -56,7 +68,7 @@ export default function ContactForm() {
             name="name"
             required
             autoComplete="name"
-            className={field}
+            className={fieldClass}
           />
         </label>
         <label className="flex flex-col gap-2">
@@ -66,7 +78,7 @@ export default function ContactForm() {
             type="email"
             required
             autoComplete="email"
-            className={field}
+            className={fieldClass}
           />
         </label>
       </div>
@@ -75,12 +87,12 @@ export default function ContactForm() {
         <span className="t-eyebrow text-ash-dim">
           {t("company")} <span className="normal-case">({t("optional")})</span>
         </span>
-        <input name="company" autoComplete="organization" className={field} />
+        <input name="company" autoComplete="organization" className={fieldClass} />
       </label>
 
       <label className="flex flex-col gap-2">
         <span className="t-eyebrow text-ash-dim">{t("message")}</span>
-        <textarea name="message" required rows={5} className={field} />
+        <textarea name="message" required rows={5} className={fieldClass} />
       </label>
 
       {state === "error" ? (

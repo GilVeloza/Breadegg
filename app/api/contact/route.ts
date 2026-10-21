@@ -1,24 +1,15 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import { hasLocale } from "next-intl";
+import { routing } from "@/i18n/routing";
+import { mailer } from "@/lib/email";
+import { renderEmail } from "@/lib/email-template";
+import { LANGUAGE_NAMES_ES } from "@/lib/intl";
+import { throttle } from "@/lib/throttle";
 
-// A crude per-instance throttle. It won't survive a cold start, but it costs
-// nothing and stops the obvious flooding; the honeypot catches the rest.
-const seen = new Map<string, number[]>();
-const WINDOW_MS = 60_000;
-const MAX_PER_WINDOW = 3;
-
-function throttled(ip: string) {
-  const now = Date.now();
-  const hits = (seen.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
-  hits.push(now);
-  seen.set(ip, hits);
-  return hits.length > MAX_PER_WINDOW;
-}
+const throttled = throttle(3);
 
 export async function POST(request: Request) {
-  const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
-  if (throttled(ip)) {
+  if (throttled(request)) {
     return NextResponse.json({ error: "rate_limited" }, { status: 429 });
   }
 
@@ -35,44 +26,59 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  const name = String(body.name ?? "").trim();
-  const email = String(body.email ?? "").trim();
-  const company = String(body.company ?? "").trim();
-  const message = String(body.message ?? "").trim();
+  const name = String(body.name ?? "").trim().slice(0, 200);
+  const email = String(body.email ?? "").trim().slice(0, 200);
+  const company = String(body.company ?? "").trim().slice(0, 200);
+  const message = String(body.message ?? "").trim().slice(0, 4000);
+  const locale = hasLocale(routing.locales, body.locale)
+    ? body.locale
+    : routing.defaultLocale;
 
   if (!name || !message || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
     return NextResponse.json({ error: "invalid" }, { status: 400 });
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_TO_EMAIL;
-  if (!apiKey || !to) {
+  const mail = mailer();
+  if (!mail) {
     console.error("Contact form is not configured: set RESEND_API_KEY and CONTACT_TO_EMAIL");
     return NextResponse.json({ error: "not_configured" }, { status: 500 });
   }
 
+  // The studio reads this one in Spanish.
+  const details = [
+    { label: "Email", value: email, href: `mailto:${email}` },
+    { label: "Empresa", value: company || "—" },
+    { label: "Idioma de la web", value: LANGUAGE_NAMES_ES[locale] ?? locale },
+  ];
+
   try {
-    const resend = new Resend(apiKey);
-    const { error } = await resend.emails.send({
-      // Must be a domain verified in Resend.
-      from: "BreadEgg <site@breadegg.com>",
-      to: [to],
+    await mail.send({
+      to: [mail.inbox],
       replyTo: email,
-      subject: `New enquiry: ${name}${company ? ` · ${company}` : ""}`,
+      subject: `Nuevo mensaje: ${name}${company ? ` · ${company}` : ""}`,
       text: [
-        `Name:    ${name}`,
-        `Email:   ${email}`,
-        `Company: ${company || "not given"}`,
+        "Nuevo mensaje desde el formulario de breadegg.com.",
+        "",
+        `Nombre: ${name}`,
+        ...details.map((d) => `${d.label}: ${d.value}`),
         "",
         message,
       ].join("\n"),
+      html: renderEmail({
+        lang: "es",
+        preheader: message.slice(0, 140),
+        eyebrow: "Nuevo mensaje desde la web",
+        title: name,
+        subtitle: company || email,
+        details,
+        quote: { label: "Mensaje", text: message },
+        cta: {
+          label: `Responder a ${name}`,
+          href: `mailto:${email}?subject=${encodeURIComponent("Re: Breadegg")}`,
+        },
+        footer: "breadegg.com · Formulario de contacto",
+      }),
     });
-
-    if (error) {
-      console.error("Resend rejected the message:", error);
-      return NextResponse.json({ error: "send_failed" }, { status: 502 });
-    }
-
     return NextResponse.json({ ok: true });
   } catch (cause) {
     console.error("Contact form failed:", cause);

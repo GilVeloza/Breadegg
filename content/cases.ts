@@ -36,6 +36,13 @@ export type CaseStudy = {
      * as a thumbnail, so the card sets it taller.
      */
     compact?: boolean;
+    /**
+     * How the logo strip draws it. "knockout" (the default) flattens the mark
+     * to one warm white; "gray" keeps the original drawing and only drains the
+     * colour, for marks that sit on a filled shape and would knock out to a
+     * blank silhouette.
+     */
+    strip?: "knockout" | "gray";
   };
   /**
    * What we made, one short label per discipline. A list rather than a
@@ -47,6 +54,12 @@ export type CaseStudy = {
   body: Localized;
   /** The live thing, when there is one to point at. */
   href?: string;
+  /**
+   * A screenshot of the work itself, 1440×900, in /public/cases/shots. Only
+   * for work we built: an identity-only job shows its mark instead, because a
+   * screenshot of someone else's website would claim a site we didn't make.
+   */
+  shot?: string;
 };
 
 export function pick(value: Localized, locale: string): string {
@@ -56,6 +69,7 @@ export function pick(value: Localized, locale: string): string {
 export const cases: CaseStudy[] = [
   {
     id: "rackers",
+    shot: "/cases/shots/rackers.jpg",
     name: "Rackers",
     logo: {
       src: "/cases/rackers.png",
@@ -87,33 +101,8 @@ export const cases: CaseStudy[] = [
     href: "https://rackers.app",
   },
   {
-    id: "madeira-dream-stays",
-    name: "Madeira Dream Stays",
-    logo: {
-      src: "/cases/madeira-dream-stays.webp",
-      width: 300,
-      height: 100,
-      alt: "Madeira Dream Stays",
-      plate: "#f7f1e8",
-    },
-    what: [
-      {
-        en: "Brand identity and logo",
-        pt: "Identidade de marca e logótipo",
-        es: "Identidad de marca y logo",
-        de: "Markenidentität und Logo",
-      },
-    ],
-    body: {
-      en: "Luxury villas and property management in Madeira.",
-      pt: "Villas de luxo e gestão de alojamento na Madeira.",
-      es: "Villas de lujo y gestión de alojamiento en Madeira.",
-      de: "Luxusvillen und Objektverwaltung auf Madeira.",
-    },
-    href: "https://www.madeiradreamstays.com",
-  },
-  {
     id: "politica-mais",
+    shot: "/cases/shots/politica-mais.jpg",
     name: "Política+",
     logo: {
       src: "/cases/politica-mais.png",
@@ -145,61 +134,44 @@ export const cases: CaseStudy[] = [
     href: "https://politicamais.pt",
   },
   {
-    id: "art-4-everyone",
-    name: "Art 4 Everyone",
+    id: "the-silicon-guys",
+    shot: "/cases/shots/the-silicon-guys.jpg",
+    name: "The Silicon Guys",
     logo: {
-      src: "/cases/art-4-everyone.png",
-      width: 600,
-      height: 352,
-      alt: "Art 4 Everyone",
-      plate: "#fbf0c9",
+      src: "/cases/the-silicon-guys.png",
+      width: 320,
+      height: 320,
+      alt: "The Silicon Guys",
+      plate: "#fb651f",
       compact: true,
+      // A faceted stone: knocked out, it would flatten to a blank pentagon.
+      strip: "gray",
     },
     what: [
       {
-        en: "Event website",
-        pt: "Website do evento",
-        es: "Web del evento",
-        de: "Event-Website",
+        en: "Website",
+        pt: "Website",
+        es: "Sitio web",
+        de: "Website",
       },
-    ],
-    body: {
-      en: "A free, open-air art gathering in Funchal, where anyone can turn up and make something.",
-      pt: "Um encontro de arte gratuito e ao ar livre no Funchal, onde qualquer pessoa pode aparecer e criar.",
-      es: "Un encuentro de arte gratuito y al aire libre en Funchal, donde cualquiera puede presentarse y crear algo.",
-      de: "Ein kostenloses Kunsttreffen unter freiem Himmel in Funchal, zu dem jeder kommen und etwas gestalten kann.",
-    },
-    href: "https://www.art4everyone.world",
-  },
-  {
-    id: "eeyesee",
-    name: "EEYE.SEE",
-    logo: {
-      src: "/cases/eeyesee.png",
-      width: 600,
-      height: 323,
-      alt: "EEYE.SEE",
-      plate: "#bf99e6",
-      compact: true,
-    },
-    what: [
       {
-        en: "Website and online shop",
-        pt: "Website e loja online",
-        es: "Web y tienda online",
-        de: "Website und Onlineshop",
+        en: "AI news radar",
+        pt: "Radar de notícias com IA",
+        es: "Radar de noticias con IA",
+        de: "KI-Nachrichtenradar",
       },
     ],
     body: {
-      en: "The studio of surreal artist Laura Michelle Kort. Originals, prints and commissions, all circling the motif of the eye.",
-      pt: "O estúdio da artista surrealista Laura Michelle Kort. Originais, impressões e encomendas, sempre à volta do motivo do olho.",
-      es: "El estudio de la artista surrealista Laura Michelle Kort. Originales, láminas y encargos, siempre en torno al motivo del ojo.",
-      de: "Das Atelier der surrealistischen Künstlerin Laura Michelle Kort. Originale, Drucke und Auftragsarbeiten, alle rund um das Motiv des Auges.",
+      en: "A weekly podcast on technology and the economy. Its AI reads dozens of sources a day and sums up in Portuguese the news the episodes are built from.",
+      pt: "Um podcast semanal de tecnologia e economia. A IA lê dezenas de fontes por dia e resume em português as notícias de onde saem os episódios.",
+      es: "Un podcast semanal de tecnología y economía. Su IA lee decenas de fuentes al día y resume en portugués las noticias de las que salen los episodios.",
+      de: "Ein wöchentlicher Podcast über Technologie und Wirtschaft. Eine KI liest täglich Dutzende Quellen und fasst auf Portugiesisch die Nachrichten zusammen, aus denen die Folgen entstehen.",
     },
-    href: "https://eeyesee.com",
+    href: "https://thesiliconguys.com",
   },
   {
     id: "travel-now-madeira",
+    shot: "/cases/shots/travel-now-madeira.jpg",
     name: "Travel Now Madeira",
     logo: {
       src: "/cases/travel-now-madeira.png",
@@ -224,6 +196,89 @@ export const cases: CaseStudy[] = [
       de: "Ein Reisebüro vor Ort, mit Touren und Flughafentransfers auf ganz Madeira.",
     },
     href: "https://www.travelnowmadeira.com",
+  },
+  {
+    id: "madeira-dream-stays",
+    name: "Madeira Dream Stays",
+    logo: {
+      src: "/cases/madeira-dream-stays.webp",
+      width: 300,
+      height: 100,
+      alt: "Madeira Dream Stays",
+      plate: "#f7f1e8",
+    },
+    what: [
+      {
+        en: "Brand identity and logo",
+        pt: "Identidade de marca e logótipo",
+        es: "Identidad de marca y logo",
+        de: "Markenidentität und Logo",
+      },
+    ],
+    body: {
+      en: "Luxury villas and property management in Madeira.",
+      pt: "Villas de luxo e gestão de alojamento na Madeira.",
+      es: "Villas de lujo y gestión de alojamiento en Madeira.",
+      de: "Luxusvillen und Objektverwaltung auf Madeira.",
+    },
+    href: "https://www.madeiradreamstays.com",
+  },
+  {
+    id: "art-4-everyone",
+    shot: "/cases/shots/art-4-everyone.jpg",
+    name: "Art 4 Everyone",
+    logo: {
+      src: "/cases/art-4-everyone.png",
+      width: 600,
+      height: 352,
+      alt: "Art 4 Everyone",
+      plate: "#fbf0c9",
+      compact: true,
+      strip: "gray",
+    },
+    what: [
+      {
+        en: "Event website",
+        pt: "Website do evento",
+        es: "Web del evento",
+        de: "Event-Website",
+      },
+    ],
+    body: {
+      en: "A free, open-air art gathering in Funchal, where anyone can turn up and make something.",
+      pt: "Um encontro de arte gratuito e ao ar livre no Funchal, onde qualquer pessoa pode aparecer e criar.",
+      es: "Un encuentro de arte gratuito y al aire libre en Funchal, donde cualquiera puede presentarse y crear algo.",
+      de: "Ein kostenloses Kunsttreffen unter freiem Himmel in Funchal, zu dem jeder kommen und etwas gestalten kann.",
+    },
+    href: "https://www.art4everyone.world",
+  },
+  {
+    id: "eeyesee",
+    shot: "/cases/shots/eeyesee.jpg",
+    name: "EEYE.SEE",
+    logo: {
+      src: "/cases/eeyesee.png",
+      width: 600,
+      height: 323,
+      alt: "EEYE.SEE",
+      plate: "#bf99e6",
+      compact: true,
+    },
+    what: [
+      {
+        en: "Website and online shop",
+        pt: "Website e loja online",
+        es: "Web y tienda online",
+        de: "Website und Onlineshop",
+      },
+    ],
+    body: {
+      en: "The studio of surreal artist Laura Michelle Kort. Originals, prints and commissions, all circling the motif of the eye.",
+      pt: "O estúdio da artista surrealista Laura Michelle Kort. Originais, impressões e encomendas, sempre à volta do motivo do olho.",
+      es: "El estudio de la artista surrealista Laura Michelle Kort. Originales, láminas y encargos, siempre en torno al motivo del ojo.",
+      de: "Das Atelier der surrealistischen Künstlerin Laura Michelle Kort. Originale, Drucke und Auftragsarbeiten, alle rund um das Motiv des Auges.",
+    },
+    href: "https://eeyesee.com",
   },
 ];
 
