@@ -554,7 +554,9 @@
       "cancelledEyebrow": "Call cancelled",
       "cancelledSubject": "Your call with Breadegg is cancelled",
       "cancelledBody": "Your call on {when} is cancelled. Whenever you'd like another time, you can book one on our website.",
-      "bookAgain": "Book another time"
+      "bookAgain": "Book another time",
+      "guide": "We have attached a short guide: what the 15 minutes are for and how to make the most of them.",
+      "guideFile": "Breadegg - Your 15-minute call.pdf"
     }
   },
   "manage": {

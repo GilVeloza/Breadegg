@@ -554,7 +554,9 @@
       "cancelledEyebrow": "Chamada cancelada",
       "cancelledSubject": "A sua chamada com a Breadegg foi cancelada",
       "cancelledBody": "A sua chamada de {when} foi cancelada. Quando quiser outra hora, pode marcá-la no nosso website.",
-      "bookAgain": "Marcar outra hora"
+      "bookAgain": "Marcar outra hora",
+      "guide": "Juntamos um guia breve: para que servem os 15 minutos e como aproveitá-los.",
+      "guideFile": "Breadegg - A sua chamada de 15 minutos.pdf"
     }
   },
   "manage": {

@@ -124,6 +124,17 @@ export async function confirmToVisitor(
     { label: "Outlook", href: outlookUrl(b, t("summary"), t("meet")) },
   ];
   const moved = kind === "moved";
+  // The guide to the call goes with the first confirmation, in their language.
+  // Resend fetches it from the site, so it never has to ride in the worker.
+  const guide = moved
+    ? []
+    : [
+        {
+          filename: t("guideFile"),
+          path: `${SITE_URL}/pdf/breadegg-call-${b.locale}.pdf`,
+          contentType: "application/pdf",
+        },
+      ];
 
   await mail.send({
     to: [b.email],
@@ -134,6 +145,7 @@ export async function confirmToVisitor(
       "",
       t("booked", { when: theirs, timeZone: b.timeZone }),
       t("meet"),
+      ...(moved ? [] : [t("guide")]),
       "",
       `${t("addTo")}:`,
       ...calendars.map((c) => `- ${c.label}: ${c.href}`),
@@ -150,7 +162,11 @@ export async function confirmToVisitor(
       eyebrow: t(moved ? "movedEyebrow" : "eyebrow"),
       title: sentence(theirs, b.locale),
       subtitle: t("duration", { timeZone: b.timeZone }),
-      paragraphs: [t("greeting", { name: b.name }), t("meet")],
+      paragraphs: [
+        t("greeting", { name: b.name }),
+        t("meet"),
+        ...(moved ? [] : [t("guide")]),
+      ],
       quote: b.message ? { label: t("yours"), text: b.message } : undefined,
       calendars: { label: t("addTo"), buttons: calendars },
       links: {
@@ -163,7 +179,7 @@ export async function confirmToVisitor(
       footnote: t("calendarNote"),
       footer: "Breadegg · Madeira, Portugal · breadegg.com",
     }),
-    attachments: [ics(calendarFile(b, t("summary"), t("meet")))],
+    attachments: [ics(calendarFile(b, t("summary"), t("meet"))), ...guide],
   });
 }
 

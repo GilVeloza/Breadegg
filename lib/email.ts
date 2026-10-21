@@ -11,7 +11,10 @@ export const EMAIL_FROM =
 
 type Attachment = {
   filename: string;
-  content: string;
+  /** Base64 content, or… */
+  content?: string;
+  /** …a public URL Resend fetches the file from. */
+  path?: string;
   contentType?: string;
   /** Set it and the attachment goes inline, for the HTML to use as cid:… */
   contentId?: string;

@@ -554,7 +554,9 @@
       "cancelledEyebrow": "Gespräch abgesagt",
       "cancelledSubject": "Ihr Gespräch mit Breadegg ist abgesagt",
       "cancelledBody": "Ihr Gespräch am {when} ist abgesagt. Wenn Sie einen neuen Termin möchten, können Sie ihn auf unserer Website buchen.",
-      "bookAgain": "Neuen Termin buchen"
+      "bookAgain": "Neuen Termin buchen",
+      "guide": "Im Anhang finden Sie einen kurzen Leitfaden: wofür die 15 Minuten da sind und wie Sie sie gut nutzen.",
+      "guideFile": "Breadegg - Ihr 15-Minuten-Gespräch.pdf"
     }
   },
   "manage": {
