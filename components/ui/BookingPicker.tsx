@@ -3,21 +3,14 @@
 import { useCallback, useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { track } from "@/lib/analytics";
-import { intlLocale } from "@/lib/intl";
 import { fieldClass } from "./ContactForm";
+import SlotPicker, { useVisitorTime, type BookingDay as Day } from "./SlotPicker";
 
-type Day = { date: string; slots: string[] };
 type Load =
   | { state: "loading" }
   | { state: "ready"; days: Day[] }
   | { state: "unavailable" };
 type Send = "idle" | "sending" | "error" | "taken";
-
-const chip =
-  "rounded-xl border px-4 py-2.5 t-body transition-colors duration-200";
-const chipIdle =
-  "border-crust-lift text-ash hover:border-ash-dim hover:text-crumb";
-const chipOn = "border-yolk/60 bg-crust-lift text-crumb";
 
 /**
  * Pick a day, then a time, then say who you are. The days come from the API,
@@ -28,10 +21,11 @@ export default function BookingPicker({ onWrite }: { onWrite: () => void }) {
   const t = useTranslations("booking");
   const f = useTranslations("contact.form");
   const siteLocale = useLocale();
-  const locale = intlLocale(siteLocale);
+  const { timeZone, full } = useVisitorTime();
 
   const [load, setLoad] = useState<Load>({ state: "loading" });
-  const [day, setDay] = useState<string | null>(null);
+  // Bumped to start the picker afresh after a slot was taken under them.
+  const [attempt, setAttempt] = useState(0);
   const [slot, setSlot] = useState<string | null>(null);
   const [send, setSend] = useState<Send>("idle");
   const [booked, setBooked] = useState<{ when: string; email: string } | null>(
@@ -55,19 +49,6 @@ export default function BookingPicker({ onWrite }: { onWrite: () => void }) {
     refresh();
   }, [refresh]);
 
-  // Read in the browser only: the server's time zone is not the visitor's.
-  const timeZone =
-    typeof window === "undefined"
-      ? "UTC"
-      : Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-  const format = (iso: string, options: Intl.DateTimeFormatOptions) =>
-    new Intl.DateTimeFormat(locale, { timeZone, ...options }).format(
-      new Date(iso),
-    );
-  const localDate = (iso: string) =>
-    new Intl.DateTimeFormat("en-CA", { timeZone }).format(new Date(iso));
-
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!slot) return;
@@ -82,23 +63,14 @@ export default function BookingPicker({ onWrite }: { onWrite: () => void }) {
         body: JSON.stringify({ ...data, slot, timeZone, locale: siteLocale }),
       });
       if (res.ok) {
-        setBooked({
-          when: format(slot, {
-            weekday: "long",
-            day: "numeric",
-            month: "long",
-            hour: "2-digit",
-            minute: "2-digit",
-          }),
-          email: String(data.email),
-        });
+        setBooked({ when: full(slot), email: String(data.email) });
         track("generate_lead", { method: "booking" });
         return;
       }
       if (res.status === 409) {
         setSend("taken");
         setSlot(null);
-        setDay(null);
+        setAttempt((a) => a + 1);
         refresh();
         return;
       }
@@ -137,8 +109,6 @@ export default function BookingPicker({ onWrite }: { onWrite: () => void }) {
     );
   }
 
-  const chosen = load.days.find((d) => d.date === day);
-
   return (
     <div className="flex flex-col gap-8">
       <div>
@@ -154,60 +124,20 @@ export default function BookingPicker({ onWrite }: { onWrite: () => void }) {
         </p>
       ) : null}
 
-      <fieldset>
-        <legend className="t-eyebrow text-ash-dim">{t("pickDay")}</legend>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {load.days.map((d) => (
-            <button
-              key={d.date}
-              type="button"
-              aria-pressed={d.date === day}
-              onClick={() => {
-                setDay(d.date);
-                setSlot(null);
-                setSend("idle");
-              }}
-              className={`${chip} ${d.date === day ? chipOn : chipIdle}`}
-            >
-              {format(d.slots[0], { weekday: "short", day: "numeric", month: "short" })}
-            </button>
-          ))}
-        </div>
-      </fieldset>
-
-      {chosen ? (
-        <fieldset>
-          <legend className="t-eyebrow text-ash-dim">{t("pickTime")}</legend>
-          <div className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-4">
-            {chosen.slots.map((s) => (
-              <button
-                key={s}
-                type="button"
-                aria-pressed={s === slot}
-                onClick={() => setSlot(s)}
-                className={`${chip} t-num ${s === slot ? chipOn : chipIdle}`}
-              >
-                {format(s, { hour: "2-digit", minute: "2-digit" })}
-                {/* Far enough east, an afternoon in Madeira is tomorrow. */}
-                {localDate(s) !== localDate(chosen.slots[0])
-                  ? ` · ${format(s, { weekday: "short" })}`
-                  : null}
-              </button>
-            ))}
-          </div>
-        </fieldset>
-      ) : null}
+      <SlotPicker
+        key={attempt}
+        days={load.days}
+        slot={slot}
+        onSlot={(next) => {
+          setSlot(next);
+          setSend("idle");
+        }}
+      />
 
       {slot ? (
         <form onSubmit={onSubmit} className="flex flex-col gap-4">
           <p className="t-lead text-crumb">
-            {format(slot, {
-              weekday: "long",
-              day: "numeric",
-              month: "long",
-              hour: "2-digit",
-              minute: "2-digit",
-            })}{" "}
+            {full(slot)}{" "}
             <button
               type="button"
               onClick={() => setSlot(null)}

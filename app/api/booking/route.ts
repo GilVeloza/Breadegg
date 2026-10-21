@@ -1,13 +1,11 @@
 import { NextResponse, connection } from "next/server";
 import { hasLocale } from "next-intl";
-import { getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { BOOKING, openDays } from "@/content/booking";
-import { bookingStore, type BookingStore } from "@/lib/booking-store";
+import { confirmToVisitor, notifyStudio } from "@/lib/booking-emails";
+import { bookingStore, type Booking, type BookingStore } from "@/lib/booking-store";
+import { createToken, hashToken } from "@/lib/booking-token";
 import { mailer } from "@/lib/email";
-import { renderEmail } from "@/lib/email-template";
-import { LANGUAGE_NAMES_ES, intlLocale } from "@/lib/intl";
-import { SITE_URL } from "@/lib/site";
 import { throttle } from "@/lib/throttle";
 
 const throttled = throttle(5);
@@ -41,62 +39,6 @@ function validTimeZone(value: unknown): string {
   }
 }
 
-function when(start: Date, locale: string, timeZone: string) {
-  return new Intl.DateTimeFormat(intlLocale(locale), {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    hour: "2-digit",
-    minute: "2-digit",
-    timeZone,
-  }).format(start);
-}
-
-/** A calendar file the visitor can open to add the call; no invitation, no RSVP. */
-function calendarFile(start: Date, summary: string, description: string) {
-  const stamp = (d: Date) => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
-  const text = (s: string) => s.replace(/([,;\\])/g, "\\$1").replace(/\n/g, "\\n");
-  const end = new Date(start.getTime() + BOOKING.callMinutes * 60_000);
-  return [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//Breadegg//Booking//EN",
-    "CALSCALE:GREGORIAN",
-    "METHOD:PUBLISH",
-    "BEGIN:VEVENT",
-    `UID:${stamp(start)}-${crypto.randomUUID()}@breadegg.com`,
-    `DTSTAMP:${stamp(new Date())}`,
-    `DTSTART:${stamp(start)}`,
-    `DTEND:${stamp(end)}`,
-    `SUMMARY:${text(summary)}`,
-    `DESCRIPTION:${text(description)}`,
-    "LOCATION:Google Meet",
-    `URL:${SITE_URL}`,
-    "END:VEVENT",
-    "END:VCALENDAR",
-    "",
-  ].join("\r\n");
-}
-
-/** Capital first letter: Intl writes "miércoles", a heading wants "Miércoles". */
-function sentence(text: string, locale: string) {
-  return text.charAt(0).toLocaleUpperCase(intlLocale(locale)) + text.slice(1);
-}
-
-/** Opens Google Calendar with the call filled in, ready to save. */
-function googleCalendarUrl(start: Date, title: string, details: string) {
-  const stamp = (d: Date) => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
-  const end = new Date(start.getTime() + BOOKING.callMinutes * 60_000);
-  const params = new URLSearchParams({
-    action: "TEMPLATE",
-    text: title,
-    dates: `${stamp(start)}/${stamp(end)}`,
-    details,
-    location: "Google Meet",
-  });
-  return `https://calendar.google.com/calendar/render?${params}`;
-}
-
 export async function POST(request: Request) {
   if (throttled(request)) {
     return NextResponse.json({ error: "rate_limited" }, { status: 429 });
@@ -119,6 +61,7 @@ export async function POST(request: Request) {
   const company = String(body.company ?? "").trim().slice(0, 200);
   const message = String(body.message ?? "").trim().slice(0, 4000);
   const slot = String(body.slot ?? "");
+  // The site language at the moment of booking: every email to them uses it.
   const locale = hasLocale(routing.locales, body.locale)
     ? body.locale
     : routing.defaultLocale;
@@ -141,61 +84,28 @@ export async function POST(request: Request) {
   const day = (await freeDays(store)).find((d) => d.slots.includes(slot));
   if (!day) return NextResponse.json({ error: "taken" }, { status: 409 });
 
-  const claimed = await store.claim({ date: day.date, slot, name, email, company });
-  if (!claimed) return NextResponse.json({ error: "taken" }, { status: 409 });
-
-  const start = new Date(slot);
-  // The visitor hears back in the language the site was in when they booked.
-  const t = await getTranslations({ locale, namespace: "booking.email" });
-  const theirs = when(start, locale, timeZone);
-  const madeira = when(start, "es", BOOKING.timeZone);
-  const theirsInSpanish = when(start, "es", timeZone);
-  const subject = t("subject", { when: theirs });
+  const token = createToken();
+  const booking: Booking = {
+    date: day.date,
+    slot,
+    name,
+    email,
+    company,
+    message,
+    locale,
+    timeZone,
+    uid: crypto.randomUUID(),
+    sequence: 0,
+    tokenHash: await hashToken(token),
+  };
+  if (!(await store.claim(booking))) {
+    return NextResponse.json({ error: "taken" }, { status: 409 });
+  }
 
   // Gil hears first. If that fails the day goes back, so nobody is booked
   // into a call that nobody knows about.
   try {
-    const studio = {
-      details: [
-        { label: "Nombre", value: name },
-        { label: "Email", value: email, href: `mailto:${email}` },
-        { label: "Empresa", value: company || "—" },
-        { label: "Su hora", value: `${theirsInSpanish} (${timeZone})` },
-        { label: "Idioma de la web", value: LANGUAGE_NAMES_ES[locale] ?? locale },
-      ],
-      footnote: `Mándale el enlace de Google Meet antes de la llamada. Para cancelarla, escríbele y borra la fila del ${day.date} en D1 (breadegg-bookings): el día vuelve a quedar libre.`,
-    };
-    await mail.send({
-      to: [mail.inbox],
-      replyTo: email,
-      subject: `Llamada reservada: ${name}${company ? ` · ${company}` : ""} · ${madeira}`,
-      text: [
-        "Nueva llamada reservada en breadegg.com.",
-        "",
-        `Cuándo:  ${madeira} (hora de Madeira) · 15 minutos`,
-        ...studio.details.map((d) => `${d.label}: ${d.value}`),
-        "",
-        "De qué quiere hablar:",
-        message || "No escribió nada.",
-        "",
-        studio.footnote,
-      ].join("\n"),
-      html: renderEmail({
-        lang: "es",
-        preheader: `${name} ha reservado una llamada de 15 minutos.`,
-        eyebrow: "Nueva llamada reservada",
-        title: sentence(madeira, "es"),
-        subtitle: "Hora de Madeira · 15 minutos",
-        details: studio.details,
-        quote: { label: "De qué quiere hablar", text: message || "No escribió nada." },
-        cta: {
-          label: `Responder a ${name}`,
-          href: `mailto:${email}?subject=${encodeURIComponent(`Re: ${subject}`)}`,
-        },
-        footnote: studio.footnote,
-        footer: "breadegg.com · Reservas",
-      }),
-    });
+    await notifyStudio(mail, "booked", booking);
   } catch (cause) {
     await store.release(day.date).catch(() => {});
     console.error("Booking: the notification to the studio failed", cause);
@@ -205,46 +115,7 @@ export async function POST(request: Request) {
   // The booking stands from here: Gil has it and can follow up by hand even
   // if the visitor's confirmation bounces.
   try {
-    await mail.send({
-      to: [email],
-      replyTo: mail.inbox,
-      subject,
-      text: [
-        t("greeting", { name }),
-        "",
-        t("booked", { when: theirs, timeZone }),
-        t("meet"),
-        t("calendarNote"),
-        t("change"),
-        ...(message ? ["", t("yours"), message] : []),
-        "",
-        t("sign"),
-      ].join("\n"),
-      html: renderEmail({
-        lang: locale,
-        preheader: t("booked", { when: theirs, timeZone }),
-        eyebrow: t("eyebrow"),
-        title: sentence(theirs, locale),
-        subtitle: t("duration", { timeZone }),
-        paragraphs: [t("greeting", { name }), t("meet")],
-        quote: message ? { label: t("yours"), text: message } : undefined,
-        cta: {
-          label: t("calendar"),
-          href: googleCalendarUrl(start, t("summary"), t("meet")),
-        },
-        footnote: `${t("calendarNote")}\n${t("change")}`,
-        footer: "Breadegg · Madeira, Portugal · breadegg.com",
-      }),
-      attachments: [
-        {
-          filename: "breadegg-call.ics",
-          content: Buffer.from(
-            calendarFile(start, t("summary"), t("meet")),
-          ).toString("base64"),
-          contentType: "text/calendar",
-        },
-      ],
-    });
+    await confirmToVisitor(mail, booking, token, "booked");
   } catch (cause) {
     console.error("Booking: the confirmation to the visitor failed", cause);
   }

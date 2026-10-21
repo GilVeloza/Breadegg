@@ -59,6 +59,10 @@ export type EmailContent = {
   details?: EmailDetail[];
   quote?: { label: string; text: string };
   cta?: { label: string; href: string };
+  /** A row of add-to-calendar buttons, one per calendar app. */
+  calendars?: { label: string; buttons: { label: string; href: string }[] };
+  /** A line of quiet text links, such as changing or cancelling. */
+  links?: { label: string; items: { label: string; href: string }[] };
   footnote?: string;
   footer: string;
 };
@@ -102,6 +106,28 @@ function button(cta: { label: string; href: string }): string {
   </a>
 </td></tr>
 </table>`;
+}
+
+/** Side by side where there is room, wrapping onto a second line where not. */
+function calendarButtons(c: NonNullable<EmailContent["calendars"]>): string {
+  const buttons = c.buttons
+    .map(
+      (b) =>
+        `<a href="${escapeHtml(b.href)}" style="display:inline-block;margin:0 8px 8px 0;padding:11px 16px;background:${C.line};border:1px solid #7a4a1a;border-radius:12px;font-family:${FONT};font-size:14px;font-weight:500;color:${C.crumb};text-decoration:none;">${escapeHtml(b.label)}</a>`,
+    )
+    .join("");
+  return `<p style="margin:32px 0 0;font-family:${FONT};font-size:12px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:${C.ashDim};">${escapeHtml(c.label)}</p>
+<div style="margin-top:12px;">${buttons}</div>`;
+}
+
+function textLinks(l: NonNullable<EmailContent["links"]>): string {
+  const items = l.items
+    .map(
+      (i) =>
+        `<a href="${escapeHtml(i.href)}" style="color:${C.crumb};text-decoration:underline;text-decoration-color:#7a4a1a;">${escapeHtml(i.label)}</a>`,
+    )
+    .join(` <span style="color:${C.ashDim};">·</span> `);
+  return `<p style="margin:24px 0 0;font-family:${FONT};font-size:15px;line-height:1.6;color:${C.ash};">${escapeHtml(l.label)} ${items}</p>`;
 }
 
 export function renderEmail(email: EmailContent): string {
@@ -151,6 +177,8 @@ export function renderEmail(email: EmailContent): string {
       ${email.details?.length ? details(email.details) : ""}
       ${email.quote ? quote(email.quote) : ""}
       ${email.cta ? button(email.cta) : ""}
+      ${email.calendars ? calendarButtons(email.calendars) : ""}
+      ${email.links ? textLinks(email.links) : ""}
       ${email.footnote ? `<p style="margin:28px 0 0;font-family:${FONT};font-size:14px;line-height:1.6;color:${C.ashDim};">${multiline(email.footnote)}</p>` : ""}
     </td></tr>
 
