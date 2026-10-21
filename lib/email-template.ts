@@ -17,7 +17,7 @@ const C = {
   line: "#34210f",
   crumb: "#f7f1e8",
   ash: "#a89685",
-  ashDim: "#6f6154",
+  ashDim: "#9a8979",
   yolk: "#f4901c",
 };
 

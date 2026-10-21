@@ -86,6 +86,8 @@ function Bullets({ lines, columns = false }: { lines: string[]; columns?: boolea
 export default function Plans() {
   const t = useTranslations("plans");
   const cta = useTranslations("cta");
+  const services = useTranslations("services");
+  const serviceNames = services.raw("items") as Record<string, { name: string }>;
   const locale = useLocale();
   const includes = t.raw("subscription.includes") as string[];
   const perks = t.raw("perks") as Perk[];
@@ -200,7 +202,9 @@ export default function Plans() {
                     href={`/services/${project.service}`}
                     className="t-body text-ash underline decoration-crust-lift underline-offset-[5px] transition-colors duration-200 hover:text-crumb hover:decoration-yolk"
                   >
-                    {cta("learnMore")}
+                    {/* Says where it goes: "learn more" alone tells a search
+                        engine, and a screen reader, nothing. */}
+                    {cta("learnAbout", { name: serviceNames[project.service].name })}
                   </Link>
                 ) : null}
               </div>

@@ -54,9 +54,9 @@
   },
   "cta": {
     "getStarted": "Get started",
-    "learnMore": "Learn more",
     "talk": "Let's talk",
-    "freeCall": "Book a 15-minute call"
+    "freeCall": "Book a 15-minute call",
+    "learnAbout": "More about {name}"
   },
   "cases": {
     "eyebrow": "Selected work",

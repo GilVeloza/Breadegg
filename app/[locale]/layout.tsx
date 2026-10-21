@@ -21,7 +21,12 @@ const inter = Inter({
   subsets: ["latin"],
   axes: ["opsz"],
   variable: "--font-inter",
-  display: "swap",
+  // Optional, not swap: the font is preloaded and nearly always arrives in the
+  // short window the browser waits, so the headline paints once, in Inter.
+  // With swap it painted twice, and the second paint, a hair larger, became
+  // the page's Largest Contentful Paint whenever the font lost the race. On a
+  // slow first visit the metric-matched fallback stays for that page only.
+  display: "optional",
 });
 
 export function generateStaticParams() {

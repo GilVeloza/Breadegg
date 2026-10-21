@@ -12,7 +12,9 @@
   --color-crust-deep: #1c1109;
   --color-crumb: #f7f1e8;
   --color-ash: #a89685;
-  --color-ash-dim: #6f6154;
+  /* The quietest text, still 4.5:1 on the crust: small type has to stay
+     readable, which is what WCAG AA asks for. */
+  --color-ash-dim: #9a8979;
 
   --color-yolk: #f4901c;
   --color-yolk-hi: #ffedae;

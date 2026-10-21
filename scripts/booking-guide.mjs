@@ -222,7 +222,7 @@ html, body {
 .top { display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 2; }
 .wordmark { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 600; letter-spacing: -0.02em; }
 .dot { width: 12px; height: 12px; border-radius: 50%; background: ${YOLK}; }
-.count, .foot, .eyebrow-dim { font-size: 12px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: #6f6154; }
+.count, .foot, .eyebrow-dim { font-size: 12px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: #9a8979; }
 .eyebrow { font-size: 13px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: #f4901c; }
 h1 { margin: 18px 0 0; font-size: 60px; line-height: 1.02; font-weight: 600; letter-spacing: -0.045em; max-width: 660px; text-wrap: balance; }
 h2 { margin: 14px 0 0; font-size: 42px; line-height: 1.08; font-weight: 600; letter-spacing: -0.035em; max-width: 820px; text-wrap: balance; }
@@ -240,7 +240,7 @@ h2 { margin: 14px 0 0; font-size: 42px; line-height: 1.08; font-weight: 600; let
 .cover .body { margin-top: 92px; }
 .cards { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .card { border: 1px solid #34210f; border-radius: 20px; background: #1c1109; padding: 28px; display: flex; flex-direction: column; min-height: 300px; }
-.card .n { font-size: 13px; font-weight: 500; letter-spacing: 0.09em; color: #6f6154; font-variant-numeric: tabular-nums; }
+.card .n { font-size: 13px; font-weight: 500; letter-spacing: 0.09em; color: #9a8979; font-variant-numeric: tabular-nums; }
 .card .time { margin-top: 18px; font-size: 13px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: #f4901c; }
 .card .speaker { margin-top: 10px; font-size: 30px; font-weight: 600; letter-spacing: -0.03em; }
 .card p { margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: #a89685; }

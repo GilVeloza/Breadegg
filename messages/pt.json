@@ -54,9 +54,9 @@
   },
   "cta": {
     "getStarted": "Começar",
-    "learnMore": "Saber mais",
     "talk": "Vamos falar",
-    "freeCall": "Marcar uma chamada de 15 minutos"
+    "freeCall": "Marcar uma chamada de 15 minutos",
+    "learnAbout": "Mais sobre {name}"
   },
   "cases": {
     "eyebrow": "Trabalhos selecionados",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { track } from "@/lib/analytics";
 import { fieldClass } from "./ContactForm";
@@ -45,8 +45,23 @@ export default function BookingPicker({ onWrite }: { onWrite: () => void }) {
     [],
   );
 
+  // Ask for the free days only when the picker is about to be seen: most
+  // visitors never scroll to the contact section, and every one of them was
+  // costing a database read on load.
+  const root = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    refresh();
+    const el = root.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        refresh();
+      },
+      { rootMargin: "400px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
   }, [refresh]);
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -89,7 +104,11 @@ export default function BookingPicker({ onWrite }: { onWrite: () => void }) {
   }
 
   if (load.state === "loading") {
-    return <p className="t-body text-ash-dim">{t("loading")}</p>;
+    return (
+      <div ref={root}>
+        <p className="t-body text-ash-dim">{t("loading")}</p>
+      </div>
+    );
   }
 
   if (load.state === "unavailable" || load.days.length === 0) {
